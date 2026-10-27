@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexo Studio — Sites profissionais e landing pages que convertem</title>
+  <meta name="description"
+    content="A Nexo Studio cria sites institucionais, landing pages e redesigns para empresas que querem ser encontradas, transmitir confiança e receber contatos pelo WhatsApp." />
+  <meta name="theme-color" content="#0B0F14" />
+  <meta property="og:title" content="Nexo Studio — Sites que conectam e convertem" />
+  <meta property="og:description"
+    content="Sites profissionais e landing pages. Sua presença digital, em outro nível." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Sprite do símbolo da marca -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gStemL" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1E3A8A" />
+        <stop offset=".55" stop-color="#2563EB" />
+        <stop offset="1" stop-color="#38BDF8" />
+      </linearGradient>
+      <linearGradient id="gStemR" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#38BDF8" />
+        <stop offset=".5" stop-color="#2563EB" />
+        <stop offset="1" stop-color="#1E3A8A" />
+      </linearGradient>
+      <linearGradient id="gDiag" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#60A5FA" />
+        <stop offset=".5" stop-color="#2563EB" />
+        <stop offset="1" stop-color="#3B82F6" />
+      </linearGradient>
+    </defs>
+    <symbol id="nexo-mark" viewBox="0 0 120 120">
+      <path d="M14 24 L36 24 L36 92 L14 104 Z" fill="url(#gStemL)" stroke="url(#gStemL)" stroke-width="5"
+        stroke-linejoin="round" />
+      <path d="M84 28 L106 16 L106 96 L84 96 Z" fill="url(#gStemR)" stroke="url(#gStemR)" stroke-width="5"
+        stroke-linejoin="round" />
+      <path d="M14 24 L36 24 L106 96 L84 96 Z" fill="url(#gDiag)" stroke="url(#gDiag)" stroke-width="5"
+        stroke-linejoin="round" />
+      <path d="M36 24 L106 96" stroke="#93C5FD" stroke-opacity=".55" stroke-width="1.2" fill="none" />
+    </symbol>
+  </svg>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand" aria-label="Nexo Studio — voltar ao início">
+        <svg class="brand__mark" aria-hidden="true">
+          <use href="#nexo-mark" />
+        </svg>
+        <span class="brand__word" aria-hidden="true">
+          <span class="wm">N<span class="e3"><i></i><i></i><i></i></span>XO</span>
+          <small>Studio</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#cases" class="nav__link">Cases</a></li>
+          <li><a href="#pacotes" class="nav__link">Pacotes</a></li>
+          <li><a href="#manutencao" class="nav__link">Manutenção</a></li>
+          <li><a href="#processo" class="nav__link">Processo</a></li>
+          <li><a href="#faq" class="nav__link">Dúvidas</a></li>
+        </ul>
+        <a href="#contato" class="btn btn--primary btn--sm nav__cta">Solicitar orçamento</a>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__arc hero__arc--1"></div>
+        <div class="hero__arc hero__arc--2"></div>
+        <div class="hero__glow"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="kicker reveal"><span class="kicker__star">✦</span> Estúdio de sites profissionais</span>
+          <h1 class="hero__title reveal">
+            Criamos sites que <span class="hl">conectam</span> e <span class="hl hl--line">convertem.</span>
+          </h1>
+          <p class="hero__lead reveal">
+            Sites institucionais e landing pages para negócios que querem ser encontrados,
+            passar confiança logo no primeiro clique e transformar visitas em conversas no WhatsApp.
+          </p>
+          <div class="hero__actions reveal">
+            <a href="#contato" class="btn btn--primary">
+              Solicitar orçamento
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 10h10M11 6l4 4-4 4" />
+              </svg>
+            </a>
+            <a href="#pacotes" class="btn btn--ghost">Ver pacotes e preços</a>
+          </div>
+          <ul class="hero__points reveal">
+            <li><b>Mobile first</b><span>Pensado para o celular</span></li>
+            <li><b>WhatsApp</b><span>Contato em um toque</span></li>
+            <li><b>A partir de R$ 590</b><span>Preço fechado</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual reveal" aria-hidden="true">
+          <div class="browser">
+            <div class="browser__bar">
+              <span class="browser__dots"><i></i><i></i><i></i></span>
+              <span class="browser__url"><svg viewBox="0 0 16 16">
+                  <path d="M5 7V5a3 3 0 0 1 6 0v2M4 7h8v6H4z" />
+                </svg>clinicavitta.com.br</span>
+            </div>
+            <div class="mini mini--dental">
+              <div class="mini__nav">
+                <b class="mini__logo">vitta<em>.</em></b>
+                <span>Tratamentos</span><span>Equipe</span><span>Contato</span>
+                <i class="mini__cta">Agendar</i>
+              </div>
+              <div class="mini__hero">
+                <div class="mini__copy">
+                  <small>Odontologia integrada</small>
+                  <h4>Seu sorriso, cuidado em cada detalhe.</h4>
+                  <p>Atendimento humanizado, tecnologia digital e um plano de tratamento feito para você.</p>
+                  <div class="mini__btns"><span>Agendar avaliação</span><span>Ver tratamentos</span></div>
+                </div>
+                <div class="mini__art"></div>
+              </div>
+              <div class="mini__row">
+                <div><b>Implantes</b><i></i><i></i></div>
+                <div><b>Clareamento</b><i></i><i></i></div>
+                <div><b>Ortodontia</b><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="mini mini--dental mini--mobile">
+              <div class="mini__nav"><b class="mini__logo">vitta<em>.</em></b><span class="mini__burger"></span></div>
+              <div class="mini__copy">
+                <small>Odontologia integrada</small>
+                <h4>Seu sorriso, cuidado em cada detalhe.</h4>
+              </div>
+              <div class="mini__art"></div>
+              <div class="mini__btns"><span>Agendar pelo WhatsApp</span></div>
+            </div>
+          </div>
+
+          <div class="toast">
+            <span class="toast__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" />
+              </svg>
+            </span>
+            <span class="toast__body">
+              <b>Nova mensagem <em>agora</em></b>
+              <span>Olá! Vi o site e quero agendar uma avaliação.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEGMENTOS ============ -->
+    <div class="marquee" aria-label="Segmentos atendidos">
+      <div class="marquee__track">
+        <ul>
+          <li>Clínicas</li>
+          <li>Advocacia</li>
+          <li>Restaurantes</li>
+          <li>Estética</li>
+          <li>Arquitetura</li>
+          <li>Academias</li>
+          <li>Imobiliárias</li>
+          <li>Contabilidade</li>
+          <li>Pet shops</li>
+          <li>Consultorias</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>Clínicas</li>
+          <li>Advocacia</li>
+          <li>Restaurantes</li>
+          <li>Estética</li>
+          <li>Arquitetura</li>
+          <li>Academias</li>
+          <li>Imobiliárias</li>
+          <li>Contabilidade</li>
+          <li>Pet shops</li>
+          <li>Consultorias</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="section manifesto">
+      <div class="container manifesto__inner">
+        <span class="eyebrow reveal"><b>00</b>Conceito</span>
+        <p class="manifesto__text reveal">
+          Mais que sites. <span>Conexões reais</span> entre a sua empresa e quem está procurando por ela.
+          Unimos design, tecnologia e estratégia para que a sua presença digital trabalhe a seu favor —
+          <span class="muted">todos os dias, inclusive quando você não está.</span>
+        </p>
+        <div class="pillars">
+          <div class="pillar reveal">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="4" y="6" width="24" height="16" rx="2" />
+              <path d="M12 27h8M16 22v5" />
+            </svg>
+            <h3>Sites profissionais</h3>
+            <p>Estrutura clara, rápida e fácil de navegar em qualquer tela.</p>
+          </div>
+          <div class="pillar reveal">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M6 26l4-1 14-14-3-3L7 22l-1 4ZM19 10l3 3" />
+              <path d="M22 4l1.2 2.8L26 8l-2.8 1.2L22 12l-1.2-2.8L18 8l2.8-1.2Z" />
+            </svg>
+            <h3>Design moderno</h3>
+            <p>Visual alinhado à sua marca, sem cara de modelo genérico.</p>
+          </div>
+          <div class="pillar reveal">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M6 26V18M13 26V12M20 26V15M27 26V6" />
+            </svg>
+            <h3>Estratégia digital</h3>
+            <p>Cada seção pensada para levar o visitante até o contato.</p>
+          </div>
+          <div class="pillar reveal">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M18 3 7 18h8l-2 11 12-16h-8l1-10Z" />
+            </svg>
+            <h3>Resultados reais</h3>
+            <p>Mais pedidos de orçamento, menos visitantes perdidos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section class="section services" id="servicos">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow reveal"><b>01</b>Serviços</span>
+          <h2 class="reveal">Três serviços. <br class="br-d" />Feitos com foco total.</h2>
+          <p class="reveal">Em vez de prometer tudo, fazemos muito bem aquilo que mais traz resultado para pequenas e
+            médias empresas.</p>
+        </div>
+
+        <div class="srv-list">
+          <article class="srv reveal">
+            <span class="srv__num">/01</span>
+            <div class="srv__main">
+              <h3>Sites institucionais <span class="tag">Serviço principal</span></h3>
+              <p>Para empresas que precisam apresentar seus serviços, mostrar seus diferenciais e receber contatos
+                direto pelo WhatsApp.</p>
+              <ul class="chips">
+                <li>Clínicas</li>
+                <li>Escritórios</li>
+                <li>Prestadores de serviço</li>
+              </ul>
+            </div>
+            <div class="srv__price"><small>Investimento</small><b>R$ 900 – 1.500</b></div>
+            <a href="#contato" class="srv__go" aria-label="Solicitar orçamento de site institucional">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </article>
+
+          <article class="srv reveal">
+            <span class="srv__num">/02</span>
+            <div class="srv__main">
+              <h3>Landing pages</h3>
+              <p>Páginas focadas em um serviço ou campanha, com apresentação comercial objetiva e um caminho claro até o
+                botão de contato.</p>
+              <ul class="chips">
+                <li>Lançamentos</li>
+                <li>Tráfego pago</li>
+                <li>Serviço único</li>
+              </ul>
+            </div>
+            <div class="srv__price"><small>Investimento</small><b>R$ 500 – 900</b></div>
+            <a href="#contato" class="srv__go" aria-label="Solicitar orçamento de landing page">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </article>
+
+          <article class="srv reveal">
+            <span class="srv__num">/03</span>
+            <div class="srv__main">
+              <h3>Redesign de sites</h3>
+              <p>Modernização de sites antigos: visual atualizado, navegação mais simples e adaptação completa para
+                celulares.</p>
+              <ul class="chips">
+                <li>Site desatualizado</li>
+                <li>Não funciona no celular</li>
+                <li>Nova identidade</li>
+              </ul>
+            </div>
+            <div class="srv__price"><small>Investimento</small><b>R$ 700 – 1.500</b></div>
+            <a href="#contato" class="srv__go" aria-label="Solicitar orçamento de redesign">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASES ============ -->
+    <!--
+      COMO ADICIONAR UM CASE REAL:
+      1. Salve o print do site em assets/cases/ (ex.: assets/cases/cliente.jpg, proporção ~16:10).
+      2. Dentro de .case__frame, substitua o bloco <div class="mini ...">...</div> por:
+         <img src="assets/cases/cliente.jpg" alt="Site da Empresa X" loading="lazy" />
+      3. Troque tags, nome, descrição e os itens de .case__meta.
+      4. Remova o selo <span class="case__status">...</span> ou troque o texto para "Publicado".
+    -->
+    <section class="section cases" id="cases">
+      <div class="container">
+        <div class="sec-head sec-head--row">
+          <div>
+            <span class="eyebrow reveal"><b>02</b>Cases de sucesso</span>
+            <h2 class="reveal">Projetos que mostram <br class="br-d" />o nosso jeito de fazer.</h2>
+          </div>
+          <p class="reveal">Conceitos desenvolvidos para segmentos diferentes. Em breve, esta seção recebe os projetos
+            publicados com clientes reais.</p>
+        </div>
+
+        <div class="cases__grid">
+
+          <!-- CASE 01 -->
+          <article class="case case--lg reveal">
+            <div class="case__media">
+              <div class="case__frame">
+                <div class="browser__bar browser__bar--light">
+                  <span class="browser__dots"><i></i><i></i><i></i></span>
+                  <span class="browser__url">clinicavitta.com.br</span>
+                </div>
+                <div class="mini mini--dental">
+                  <div class="mini__nav">
+                    <b class="mini__logo">vitta<em>.</em></b>
+                    <span>Tratamentos</span><span>Equipe</span><span>Contato</span>
+                    <i class="mini__cta">Agendar</i>
+                  </div>
+                  <div class="mini__hero">
+                    <div class="mini__copy">
+                      <small>Odontologia integrada</small>
+                      <h4>Seu sorriso, cuidado em cada detalhe.</h4>
+                      <p>Atendimento humanizado, tecnologia digital e um plano de tratamento feito para você.</p>
+                      <div class="mini__btns"><span>Agendar avaliação</span><span>Ver tratamentos</span></div>
+                    </div>
+                    <div class="mini__art"></div>
+                  </div>
+                  <div class="mini__row">
+                    <div><b>Implantes</b><i></i><i></i></div>
+                    <div><b>Clareamento</b><i></i><i></i></div>
+                    <div><b>Ortodontia</b><i></i><i></i></div>
+                  </div>
+                </div>
+              </div>
+              <span class="case__status">Case real em breve</span>
+            </div>
+            <div class="case__body">
+              <ul class="case__tags">
+                <li>Saúde</li>
+                <li>Site institucional</li>
+              </ul>
+              <h3>Clínica Vitta</h3>
+              <p>Site de 5 páginas para clínica odontológica, com tratamentos organizados por necessidade e agendamento
+                direto pelo WhatsApp.</p>
+              <dl class="case__meta">
+                <div>
+                  <dt>Pacote</dt>
+                  <dd>Site Profissional</dd>
+                </div>
+                <div>
+                  <dt>Objetivo</dt>
+                  <dd>Agendamentos</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <!-- CASE 02 -->
+          <article class="case reveal">
+            <div class="case__media">
+              <div class="case__frame">
+                <div class="browser__bar browser__bar--dark">
+                  <span class="browser__dots"><i></i><i></i><i></i></span>
+                  <span class="browser__url">moraeslima.adv.br</span>
+                </div>
+                <div class="mini mini--law">
+                  <div class="mini__nav">
+                    <b class="mini__logo">Moraes &amp; Lima</b>
+                    <span>Áreas</span><span>Escritório</span><span>Contato</span>
+                    <i class="mini__cta">Consulta</i>
+                  </div>
+                  <div class="mini__hero">
+                    <div class="mini__copy">
+                      <small>Advocacia empresarial</small>
+                      <h4>Segurança jurídica para decisões importantes.</h4>
+                      <p>Atuação estratégica em direito empresarial, trabalhista e contratual.</p>
+                      <div class="mini__btns"><span>Agendar consulta</span><span>Áreas de atuação</span></div>
+                    </div>
+                    <div class="mini__art"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="case__status">Case real em breve</span>
+            </div>
+            <div class="case__body">
+              <ul class="case__tags">
+                <li>Jurídico</li>
+                <li>Site Premium</li>
+              </ul>
+              <h3>Moraes &amp; Lima Advocacia</h3>
+              <p>Presença sóbria e confiável, com áreas de atuação detalhadas e estrutura de SEO para buscas locais.</p>
+            </div>
+          </article>
+
+          <!-- CASE 03 -->
+          <article class="case reveal">
+            <div class="case__media">
+              <div class="case__frame">
+                <div class="browser__bar browser__bar--warm">
+                  <span class="browser__dots"><i></i><i></i><i></i></span>
+                  <span class="browser__url">brasacozinha.com.br</span>
+                </div>
+                <div class="mini mini--food">
+                  <div class="mini__nav">
+                    <b class="mini__logo">Brasa</b>
+                    <span>Cardápio</span><span>A casa</span><span>Reservas</span>
+                    <i class="mini__cta">Reservar</i>
+                  </div>
+                  <div class="mini__hero">
+                    <div class="mini__copy">
+                      <small>Cozinha de fogo · desde 2014</small>
+                      <h4>Sabor que nasce na brasa.</h4>
+                      <p>Cortes selecionados, ingredientes locais e uma noite para lembrar.</p>
+                      <div class="mini__btns"><span>Reservar mesa</span><span>Ver cardápio</span></div>
+                    </div>
+                    <div class="mini__art"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="case__status">Case real em breve</span>
+            </div>
+            <div class="case__body">
+              <ul class="case__tags">
+                <li>Gastronomia</li>
+                <li>Landing page</li>
+              </ul>
+              <h3>Brasa Cozinha</h3>
+              <p>Landing page com cardápio em destaque, fotos que abrem o apetite e reservas pelo WhatsApp.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="cases__cta reveal">
+          <p><b>O próximo case pode ser o seu.</b> Vamos colocar a sua empresa nesta lista.</p>
+          <a href="#contato" class="btn btn--light">Quero meu site</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PACOTES ============ -->
+    <section class="section pricing" id="pacotes">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow eyebrow--ink reveal"><b>03</b>Pacotes</span>
+          <h2 class="reveal">Preço fechado, <br class="br-m" />sem surpresa no final.</h2>
+          <p class="reveal">Escolha o ponto de partida. Tudo é detalhado na proposta antes de começarmos.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan reveal">
+            <header class="plan__head">
+              <h3>Landing Start</h3>
+              <p>Para divulgar um serviço ou campanha com rapidez.</p>
+            </header>
+            <div class="plan__price"><span class="cur">R$</span><span class="val">590</span><span class="per">pagamento
+                único</span></div>
+            <ul class="plan__list">
+              <li>Página única com seções estratégicas</li>
+              <li>Apresentação completa do serviço</li>
+              <li>Botão de WhatsApp sempre visível</li>
+              <li>Versão otimizada para celular</li>
+              <li>Links para redes sociais</li>
+              <li>1 rodada de ajustes</li>
+            </ul>
+            <div class="plan__foot">
+              <span class="plan__time">Entrega em até 7 dias úteis</span>
+              <a class="btn btn--outline-ink btn--block"
+                data-wa="Olá, Nexo Studio! Tenho interesse no pacote Landing Start (R$ 590)." href="#contato">Escolher
+                Landing Start</a>
+            </div>
+          </article>
+
+          <article class="plan plan--featured reveal">
+            <span class="plan__badge">Recomendado</span>
+            <header class="plan__head">
+              <h3>Site Profissional</h3>
+              <p>O site completo que a maioria das empresas precisa.</p>
+            </header>
+            <div class="plan__price"><span class="cur">R$</span><span class="val">1.190</span><span
+                class="per">pagamento único</span></div>
+            <ul class="plan__list">
+              <li>Até 5 páginas</li>
+              <li>Formulário de contato ou WhatsApp</li>
+              <li>Versão mobile completa</li>
+              <li>Mapa, horários e redes sociais</li>
+              <li>Otimização de velocidade</li>
+              <li>2 rodadas de ajustes</li>
+            </ul>
+            <div class="plan__foot">
+              <span class="plan__time">Entrega em até 15 dias úteis</span>
+              <a class="btn btn--primary btn--block"
+                data-wa="Olá, Nexo Studio! Tenho interesse no pacote Site Profissional (R$ 1.190)."
+                href="#contato">Escolher Site Profissional</a>
+            </div>
+          </article>
+
+          <article class="plan reveal">
+            <header class="plan__head">
+              <h3>Site Premium</h3>
+              <p>Para quem quer mais páginas e ser encontrado no Google.</p>
+            </header>
+            <div class="plan__price"><span class="cur">R$</span><span class="val">1.790</span><span
+                class="per">pagamento único</span></div>
+            <ul class="plan__list">
+              <li>Até 8 páginas</li>
+              <li>Estrutura de SEO básico</li>
+              <li>Recursos adicionais combinados <em>(galeria, blog, depoimentos…)</em></li>
+              <li>Formulário + WhatsApp</li>
+              <li>Integração com Google Analytics</li>
+              <li>3 rodadas de ajustes</li>
+            </ul>
+            <div class="plan__foot">
+              <span class="plan__time">Entrega em até 25 dias úteis</span>
+              <a class="btn btn--outline-ink btn--block"
+                data-wa="Olá, Nexo Studio! Tenho interesse no pacote Site Premium (R$ 1.790)." href="#contato">Escolher
+                Site Premium</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="pricing__note reveal">
+          Precisa de um <b>redesign</b> ou de algo fora dos pacotes? <a href="#contato">Peça um orçamento personalizado
+            →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ MANUTENÇÃO ============ -->
+    <section class="section care" id="manutencao">
+      <div class="container care__inner">
+        <div class="care__intro">
+          <span class="eyebrow reveal"><b>04</b>Manutenção mensal</span>
+          <h2 class="reveal">O site no ar é só o começo.</h2>
+          <p class="reveal">Com um plano de manutenção, você não precisa se preocupar com atualizações, ajustes de
+            conteúdo ou com o site fora do ar. A gente cuida.</p>
+          <ul class="care__perks reveal">
+            <li>Sem fidelidade</li>
+            <li>Cancelamento simples</li>
+            <li>Atendimento pelo WhatsApp</li>
+          </ul>
+        </div>
+
+        <div class="care__plans">
+          <article class="cplan reveal">
+            <div class="cplan__top">
+              <h3>Essencial</h3>
+              <p class="cplan__price"><span>R$</span>79<small>/mês</small></p>
+            </div>
+            <p class="cplan__desc">Verificação do site e pequenas atualizações.</p>
+            <ul>
+              <li>Monitoramento do site</li>
+              <li>Pequenas atualizações de texto</li>
+              <li>Backup periódico</li>
+            </ul>
+            <a href="#contato" class="cplan__link"
+              data-wa="Olá, Nexo Studio! Quero saber mais sobre o plano de manutenção Essencial (R$ 79/mês).">Assinar
+              Essencial</a>
+          </article>
+
+          <article class="cplan cplan--hl reveal">
+            <span class="cplan__flag">Mais completo pelo preço</span>
+            <div class="cplan__top">
+              <h3>Cuidado</h3>
+              <p class="cplan__price"><span>R$</span>149<small>/mês</small></p>
+            </div>
+            <p class="cplan__desc">Atualizações, alterações de conteúdo e suporte.</p>
+            <ul>
+              <li>Tudo do Essencial</li>
+              <li>Troca de fotos, textos e preços</li>
+              <li>Suporte limitado por WhatsApp</li>
+            </ul>
+            <a href="#contato" class="cplan__link"
+              data-wa="Olá, Nexo Studio! Quero saber mais sobre o plano de manutenção Cuidado (R$ 149/mês).">Assinar
+              Cuidado</a>
+          </article>
+
+          <article class="cplan reveal">
+            <div class="cplan__top">
+              <h3>Presença</h3>
+              <p class="cplan__price"><span>R$</span>249<small>/mês</small></p>
+            </div>
+            <p class="cplan__desc">Manutenção, atualizações frequentes e relatório.</p>
+            <ul>
+              <li>Tudo do Cuidado</li>
+              <li>Atualizações frequentes</li>
+              <li>Relatório mensal de acessos</li>
+            </ul>
+            <a href="#contato" class="cplan__link"
+              data-wa="Olá, Nexo Studio! Quero saber mais sobre o plano de manutenção Presença (R$ 249/mês).">Assinar
+              Presença</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESSO ============ -->
+    <section class="section process" id="processo">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow reveal"><b>05</b>Como funciona</span>
+          <h2 class="reveal">Do primeiro contato <br class="br-d" />ao site publicado.</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__n">01</span>
+            <h3>Conversa</h3>
+            <p>Entendemos o seu negócio, seu público e o que o site precisa resolver.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">02</span>
+            <h3>Proposta</h3>
+            <p>Você recebe escopo, prazo e valor por escrito. Sem letras miúdas.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">03</span>
+            <h3>Criação</h3>
+            <p>Desenhamos e desenvolvemos o site com base no seu conteúdo e na sua marca.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">04</span>
+            <h3>Ajustes</h3>
+            <p>Você revisa, comenta e nós refinamos até ficar do jeito certo.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">05</span>
+            <h3>No ar</h3>
+            <p>Publicamos no seu domínio e entregamos tudo funcionando.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq">
+      <div class="container faq__inner">
+        <div class="faq__intro">
+          <span class="eyebrow reveal"><b>06</b>Dúvidas frequentes</span>
+          <h2 class="reveal">Perguntas que sempre aparecem.</h2>
+          <p class="reveal">Não encontrou a sua? <a href="#contato">Fale com a gente</a> — respondemos rápido.</p>
+        </div>
+
+        <div class="faq__list">
+          <details class="qa reveal">
+            <summary>Quanto tempo leva para o site ficar pronto?</summary>
+            <div class="qa__a">
+              <p>Depende do pacote. Uma landing page fica pronta em até 7 dias úteis; sites com mais páginas levam entre
+                15 e 25 dias úteis. O prazo começa a contar a partir do recebimento dos conteúdos (textos, fotos e
+                logo).</p>
+            </div>
+          </details>
+          <details class="qa reveal">
+            <summary>Domínio e hospedagem estão inclusos?</summary>
+            <div class="qa__a">
+              <p>O domínio (como suaempresa.com.br) e a hospedagem ficam registrados no nome do cliente — assim o site é
+                sempre seu. Nós orientamos a contratação e cuidamos de toda a configuração.</p>
+            </div>
+          </details>
+          <details class="qa reveal">
+            <summary>Preciso ter textos e fotos prontos?</summary>
+            <div class="qa__a">
+              <p>Ajuda, mas não é obrigatório. Enviamos um roteiro simples com o que é necessário e organizamos o
+                conteúdo para que ele fique claro e convincente no site.</p>
+            </div>
+          </details>
+          <details class="qa reveal">
+            <summary>Como funciona o pagamento?</summary>
+            <div class="qa__a">
+              <p>As condições ficam definidas na proposta e no contrato. Normalmente trabalhamos com uma entrada para
+                iniciar o projeto e o restante na entrega, via Pix ou transferência.</p>
+            </div>
+          </details>
+          <details class="qa reveal">
+            <summary>Meu site vai aparecer no Google?</summary>
+            <div class="qa__a">
+              <p>Todos os sites são publicados com a estrutura técnica correta para serem indexados. O pacote Premium
+                inclui SEO básico: títulos, descrições, organização de conteúdo e cadastro no Google Search Console.</p>
+            </div>
+          </details>
+          <details class="qa reveal">
+            <summary>E se eu precisar mudar algo depois?</summary>
+            <div class="qa__a">
+              <p>Você pode contratar um dos planos de manutenção mensal ou solicitar alterações avulsas, orçadas
+                conforme a necessidade.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="section contact" id="contato">
+      <div class="container">
+        <div class="contact__card">
+          <div class="contact__bg" aria-hidden="true">
+            <svg class="contact__mark">
+              <use href="#nexo-mark" />
+            </svg>
+          </div>
+
+          <div class="contact__copy">
+            <span class="eyebrow reveal"><b>07</b>Orçamento</span>
+            <h2 class="reveal">Sua presença digital, <span class="hl">em outro nível.</span></h2>
+            <p class="reveal">Conte um pouco sobre o seu negócio. Respondemos pelo WhatsApp com uma proposta clara, sem
+              compromisso.</p>
+
+            <ul class="contact__channels reveal">
+              <li>
+                <a href="#" data-wa="Olá, Nexo Studio! Gostaria de solicitar um orçamento." class="channel">
+                  <span class="channel__ic"><svg viewBox="0 0 24 24">
+                      <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" />
+                      <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5Z" />
+                    </svg></span>
+                  <span><small>WhatsApp</small><b class="js-phone">(19) 99633-1656</b></span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contato@nexostudio.com.br" class="channel">
+                  <span class="channel__ic"><svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="m3 7 9 6 9-6" />
+                    </svg></span>
+                  <span><small>E-mail</small><b>contato@nexostudio.com.br</b></span>
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/nexo.studio.creative" target="_blank" rel="noopener" class="channel">
+                  <span class="channel__ic"><svg viewBox="0 0 24 24">
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r=".8" />
+                    </svg></span>
+                  <span><small>Instagram</small><b>@nexo.studio.creative</b></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <form class="form reveal" id="quote-form" novalidate>
+            <div class="form__row">
+              <label class="field">
+                <span>Seu nome</span>
+                <input type="text" name="nome" id="f-nome" autocomplete="name" placeholder="Como podemos te chamar?"
+                  required />
+              </label>
+              <label class="field">
+                <span>Empresa</span>
+                <input type="text" name="empresa" id="f-empresa" autocomplete="organization"
+                  placeholder="Nome do negócio" />
+              </label>
+            </div>
+
+            <fieldset class="field field--choices">
+              <legend>O que você precisa?</legend>
+              <div class="choices">
+                <label><input type="radio" name="tipo" value="Site institucional" checked /><span>Site
+                    institucional</span></label>
+                <label><input type="radio" name="tipo" value="Landing page" /><span>Landing page</span></label>
+                <label><input type="radio" name="tipo" value="Redesign de site" /><span>Redesign</span></label>
+                <label><input type="radio" name="tipo" value="Manutenção mensal" /><span>Manutenção</span></label>
+                <label><input type="radio" name="tipo" value="Ainda não sei" /><span>Ainda não sei</span></label>
+              </div>
+            </fieldset>
+
+            <label class="field">
+              <span>Conte um pouco sobre o projeto</span>
+              <textarea name="mensagem" id="f-msg" rows="4"
+                placeholder="Ex.: tenho uma clínica e quero um site para receber agendamentos pelo WhatsApp."></textarea>
+            </label>
+
+            <button type="submit" class="btn btn--primary btn--block" id="f-submit">
+              Enviar pelo WhatsApp
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 10h10M11 6l4 4-4 4" />
+              </svg>
+            </button>
+            <p class="form__hint" id="f-hint">Ao enviar, o WhatsApp abre com a sua mensagem pronta.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#inicio" class="brand" aria-label="Nexo Studio — voltar ao início">
+          <svg class="brand__mark" aria-hidden="true">
+            <use href="#nexo-mark" />
+          </svg>
+          <span class="brand__word" aria-hidden="true">
+            <span class="wm">N<span class="e3"><i></i><i></i><i></i></span>XO</span>
+            <small>Studio</small>
+          </span>
+        </a>
+        <p>Sites que conectam o seu negócio ao futuro.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Rodapé">
+        <div>
+          <h4>Estúdio</h4>
+          <a href="#servicos">Serviços</a>
+          <a href="#cases">Cases</a>
+          <a href="#processo">Processo</a>
+        </div>
+        <div>
+          <h4>Planos</h4>
+          <a href="#pacotes">Pacotes</a>
+          <a href="#manutencao">Manutenção</a>
+          <a href="#faq">Dúvidas</a>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <a href="#" data-wa="Olá, Nexo Studio!">WhatsApp</a>
+          <a href="mailto:contato@nexostudio.com.br">E-mail</a>
+          <a href="https://instagram.com/nexo.studio.creative" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Nexo Studio. Todos os direitos reservados. · <button type="button" class="footer__privacy-btn" id="open-cookies">Privacidade &amp; Cookies</button></span>
+      <span class="footer__tag">Sites · Design · Estratégia digital</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a href="#" class="wa-float" data-wa="Olá, Nexo Studio! Vim pelo site e gostaria de um orçamento."
+    aria-label="Conversar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" />
+      <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5Z" />
+    </svg>
+  </a>
+
+  <!-- Banner de Cookies (LGPD) -->
+  <aside class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de Privacidade e Cookies" hidden>
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__content">
+        <div class="cookie-banner__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5Z" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <circle cx="15.5" cy="15.5" r="1.5" />
+            <circle cx="9.5" cy="15.5" r="1" />
+          </svg>
+        </div>
+        <div class="cookie-banner__text">
+          <strong>Privacidade &amp; Cookies</strong>
+          <p>Utilizamos cookies essenciais e tecnologias semelhantes para garantir o funcionamento do site e melhorar sua experiência, de acordo com a nossa política e a LGPD.</p>
+        </div>
+      </div>
+      <div class="cookie-banner__actions">
+        <button type="button" class="btn btn--ghost btn--sm" id="cookie-essential">Apenas essenciais</button>
+        <button type="button" class="btn btn--primary btn--sm" id="cookie-accept">Aceitar todos</button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
