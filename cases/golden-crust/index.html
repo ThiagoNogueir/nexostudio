@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Crust — Padaria & Confeitaria Artesanal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FBF8F2;
+      --card-bg: #FFFFFF;
+      --text: #2C241E;
+      --muted: #7E7267;
+      --gold: #D68F3D;
+      --gold-dark: #B87325;
+      --hero-bg: #1B110B;
+      --line: rgba(44, 36, 30, 0.08);
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .header {
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo svg {
+      width: 32px;
+      height: 32px;
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.8;
+    }
+    .logo-text b {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+    .logo-text small {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav a.is-active, .nav a:hover {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .nav a.is-active {
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 4px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(214, 143, 61, 0.12);
+      color: var(--gold-dark);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at 70% 50%, #2A1D15 0%, #170E08 100%);
+      color: #FFF6EC;
+      padding: 60px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 40px;
+      align-items: center;
+      min-height: 440px;
+    }
+    .hero__copy {
+      max-width: 520px;
+      margin-left: auto;
+    }
+    .hero__copy h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(38px, 4vw, 56px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #FFF8F0;
+    }
+    .hero__copy p {
+      margin-top: 18px;
+      font-size: 16px;
+      color: #D1C0B0;
+      line-height: 1.6;
+    }
+    .hero__btn {
+      margin-top: 28px;
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .hero__btn:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .hero__media {
+      display: flex;
+      justify-content: center;
+    }
+    .hero__media img {
+      width: 100%;
+      max-width: 580px;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    /* Produtos */
+    .products-sec {
+      padding: 70px 48px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .sec-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .sec-title h2 {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .sec-title p {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+    .product-card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(44, 36, 30, 0.03);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -10px rgba(44, 36, 30, 0.1);
+    }
+    .product-thumb {
+      height: 140px;
+      background: #F4ECE3;
+      overflow: hidden;
+    }
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-info h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      min-height: 38px;
+    }
+    .product-info p {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.45;
+      flex: 1;
+      min-height: 48px;
+    }
+    .product-foot {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line);
+    }
+    .product-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+    .btn-order {
+      background: var(--gold);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 7px 13px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-order:hover { background: var(--gold-dark); }
+
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero { grid-template-columns: 1fr; padding: 40px 24px; }
+      .header { padding: 16px 24px; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 32 32">
+        <path d="M6 18c0-5.5 4.5-10 10-10s10 4.5 10 10c0 4-2 7-6 8H12c-4-1-6-4-6-8Z" />
+        <path d="M10 17c2-3 4-4 6-4s4 1 6 4M12 21c1.5-1 2.5-1 4-1s2.5 0 4 1" />
+      </svg>
+      <div class="logo-text">
+        <b>Golden Crust</b>
+        <small>Padaria &amp; Confeitaria Artesanal</small>
+      </div>
+    </a>
+    <ul class="nav">
+      <li><a href="#" class="is-active">Início</a></li>
+      <li><a href="#">Cardápio</a></li>
+      <li><a href="#">Sobre Nós</a></li>
+      <li><a href="#">Pedir Online</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+    <div class="header-actions">
+      <a href="#" class="cart-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-13zM6 6L4 2H1M9 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+        <span>Meu Pedido</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__copy">
+        <h1>Pães Artesanais de Fermentação Natural, Assados Todos os Dias</h1>
+        <p>Criados com paixão, métodos artesanais franceses, fermentação lenta de 36h e farinhas orgânicas selecionadas.</p>
+        <a href="#catalogo" class="hero__btn">Conheça Nossos Pães</a>
+      </div>
+      <div class="hero__media">
+        <img src="../../assets/cases/bread-hero.jpg" alt="Pão Artesanal Sourdough na Tábua de Madeira">
+      </div>
+    </section>
+
+    <section class="products-sec" id="catalogo">
+      <div class="sec-title">
+        <h2>Produtos em Destaque</h2>
+        <p>Receitas clássicas assadas na primeira hora da manhã para sua mesa</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-thumb"><img src="../../assets/cases/bread-p1.jpg" alt="Pão Sourdough Tradicional"></div>
+          <div class="product-info">
+            <h3>Pão Sourdough Tradicional</h3>
+            <p>Fermentação natural de 36 horas, crosta dourada e miolo macio e aerado.</p>
+            <div class="product-foot">
+              <span class="product-price">R$ 28,00</span>
+              <a href="#" class="btn-order">Pedir Agora</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb"><img src="../../assets/cases/bread-p2.jpg" alt="Croissant na Manteiga"></div>
+          <div class="product-info">
+            <h3>Croissant Francês</h3>
+            <p>Folhado leve e crocante feito com manteiga francesa pura e 72 camadas.</p>
+            <div class="product-foot">
+              <span class="product-price">R$ 14,00</span>
+              <a href="#" class="btn-order">Pedir Agora</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb"><img src="../../assets/cases/bread-p3.jpg" alt="Croissant com Recheio"></div>
+          <div class="product-info">
+            <h3>Croissant Recheado</h3>
+            <p>Recheio suave de chocolate belga ou queijo artesanal da serra.</p>
+            <div class="product-foot">
+              <span class="product-price">R$ 17,00</span>
+              <a href="#" class="btn-order">Pedir Agora</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb"><img src="../../assets/cases/bread-p4.jpg" alt="Croissant de Amêndoas"></div>
+          <div class="product-info">
+            <h3>Croissant de Amêndoas</h3>
+            <p>Creme de amêndoas frangipane e cobertura crocante de lâminas tostadas.</p>
+            <div class="product-foot">
+              <span class="product-price">R$ 19,00</span>
+              <a href="#" class="btn-order">Pedir Agora</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb"><img src="../../assets/cases/bread-p5.jpg" alt="Cinnamon Roll Artesanal"></div>
+          <div class="product-info">
+            <h3>Cinnamon Roll</h3>
+            <p>Massa brioche macia recheada com canela do Ceilão e cobertura de cream cheese.</p>
+            <div class="product-foot">
+              <span class="product-price">R$ 16,00</span>
+              <a href="#" class="btn-order">Pedir Agora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

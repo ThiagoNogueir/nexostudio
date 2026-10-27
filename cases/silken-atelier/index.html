@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silken Atelier — Cabelo & Estética de Luxo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAF7F2;
+      --paper: #FFFFFF;
+      --card-bg: #F4EBE3;
+      --text: #26211E;
+      --muted: #756D67;
+      --rose: #C89585;
+      --rose-light: #EAD8D1;
+      --rose-btn: #D3A294;
+      --line: rgba(38, 33, 30, 0.08);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .topbar {
+      background: #E8D5CE;
+      color: #5D433C;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 9px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar a { color: inherit; text-decoration: none; font-weight: 600; }
+    .header {
+      padding: 22px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.1;
+      text-decoration: none;
+    }
+    .logo span { display: block; font-size: 13px; letter-spacing: 0.28em; opacity: 0.85; }
+    .nav { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav a:hover { color: var(--text); }
+    .btn-book {
+      background: var(--rose-btn);
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-book:hover { opacity: .9; transform: translateY(-1px); }
+
+    .hero {
+      padding: 60px 48px 70px;
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero__copy h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(44px, 5.2vw, 68px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: #382F2B;
+    }
+    .hero__copy p {
+      margin-top: 24px;
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+    .hero__btn {
+      margin-top: 36px;
+      display: inline-block;
+      background: var(--rose-light);
+      color: #4A332C;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .hero__img-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(60, 40, 30, 0.12);
+    }
+    .hero__img-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Agendamento */
+    .booking-sec {
+      background: #FFFFFF;
+      padding: 70px 48px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .booking-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .booking-head {
+      margin-bottom: 28px;
+    }
+    .booking-head small {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .booking-head h2 {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--text);
+    }
+    .date-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .date-pill {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 22px;
+      text-align: center;
+      cursor: pointer;
+      min-width: 110px;
+      transition: all .2s;
+    }
+    .date-pill.is-active {
+      background: #FAF2EE;
+      border-color: var(--rose);
+      box-shadow: 0 4px 12px rgba(200, 149, 133, 0.18);
+    }
+    .date-pill b { display: block; font-size: 13px; font-weight: 600; color: var(--text); }
+    .date-pill span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+    .time-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .time-slot {
+      background: #FAF7F2;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .time-slot.is-active {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+    }
+
+    /* Especialistas */
+    .team-sec {
+      padding: 70px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .team-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 36px;
+    }
+    .team-head small {
+      font-size: 11.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .team-head a {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .stylists-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+    .stylist-card {
+      background: #FFFFFF;
+      padding: 30px 20px 24px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .stylist-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px -10px rgba(60, 40, 30, 0.08);
+    }
+    .stylist-avatar {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    .stylist-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .stylist-card h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .stylist-card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .header { padding: 18px 24px; }
+      .nav { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 40px 24px; }
+      .hero__img-wrap img { height: 360px; }
+      .stylists-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>Oferta de boas-vindas: 20% off no seu primeiro agendamento</span>
+    <a href="#agendamento">Agendar Horário →</a>
+  </div>
+
+  <header class="header">
+    <a href="#" class="logo">
+      Silken Atelier
+      <span>Beleza &amp; Cabelos</span>
+    </a>
+    <ul class="nav">
+      <li><a href="#">Serviços</a></li>
+      <li><a href="#">Especialistas</a></li>
+      <li><a href="#">Sobre Nós</a></li>
+      <li><a href="#">Galeria</a></li>
+      <li><a href="#">Produtos</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+    <a href="#agendamento" class="btn-book">Agendar Horário</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__copy">
+        <h1>Luxo discreto para cada fio.</h1>
+        <p>No Silken Atelier, acreditamos na arte da beleza autêntica — onde precisão técnica, elegância e atenção exclusiva a você se encontram.</p>
+        <a href="#agendamento" class="hero__btn">Reserve sua Experiência</a>
+      </div>
+      <div class="hero__img-wrap">
+        <img src="../../assets/cases/salon-woman.jpg" alt="Silken Atelier - Beleza & Estética">
+      </div>
+    </section>
+
+    <section class="booking-sec" id="agendamento">
+      <div class="booking-inner">
+        <div class="booking-head">
+          <small>Agende seu Horário</small>
+          <h2>Quando você gostaria de nos visitar?</h2>
+        </div>
+        <div class="date-row">
+          <div class="date-pill is-active">
+            <b>Hoje</b>
+            <span>24 Mai</span>
+          </div>
+          <div class="date-pill">
+            <b>Domingo</b>
+            <span>25 Mai</span>
+          </div>
+          <div class="date-pill">
+            <b>Segunda</b>
+            <span>26 Mai</span>
+          </div>
+          <div class="date-pill">
+            <b>Terça</b>
+            <span>27 Mai</span>
+          </div>
+          <div class="date-pill">
+            <b>Quarta</b>
+            <span>28 Mai</span>
+          </div>
+        </div>
+        <div class="time-row">
+          <div class="time-slot">09:00</div>
+          <div class="time-slot is-active">10:30</div>
+          <div class="time-slot">12:00</div>
+          <div class="time-slot">13:30</div>
+          <div class="time-slot">15:00</div>
+          <div class="time-slot">16:30</div>
+          <div class="time-slot">18:00</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-sec">
+      <div class="team-head">
+        <div>
+          <small>Nossa Equipe</small>
+          <h2 style="font-family: var(--font-serif); font-size: 32px; font-weight: 400;">Conheça Nossos Especialistas</h2>
+        </div>
+        <a href="#">Ver Todos →</a>
+      </div>
+      <div class="stylists-grid">
+        <div class="stylist-card">
+          <div class="stylist-avatar"><img src="../../assets/cases/stylist-1.jpg" alt="Lena Morgan"></div>
+          <h3>Lena Morgan</h3>
+          <p>Master Stylist &amp; Visagismo</p>
+        </div>
+        <div class="stylist-card">
+          <div class="stylist-avatar"><img src="../../assets/cases/stylist-2.jpg" alt="Isabella Reyes"></div>
+          <h3>Isabella Reyes</h3>
+          <p>Especialista em Mechas &amp; Cor</p>
+        </div>
+        <div class="stylist-card">
+          <div class="stylist-avatar"><img src="../../assets/cases/stylist-3.jpg" alt="Maya Kim"></div>
+          <h3>Maya Kim</h3>
+          <p>Especialista em Corte &amp; Estilo</p>
+        </div>
+        <div class="stylist-card">
+          <div class="stylist-avatar"><img src="../../assets/cases/stylist-4.jpg" alt="Tessa Rowe"></div>
+          <h3>Tessa Rowe</h3>
+          <p>Tratamentos &amp; Textura</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
