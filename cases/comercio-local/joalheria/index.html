@@ -611,14 +611,215 @@
       font-size: 0.78rem;
     }
 
+    /* Mobile Sticky Bar default hidden on desktop */
+    .mobile-sticky-bar { display: none; }
+
     @media (max-width: 900px) {
       .header-menu { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-      .config-output-box { flex-direction: column; align-items: flex-start; }
+
+    /* ==========================================================================
+       ADVANCED MOBILE RESPONSIVENESS (320px - 768px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 74px; /* Space for mobile sticky action bar */
+        overflow-x: hidden;
+      }
+      .top-strip {
+        padding: 6px 14px;
+        font-size: 0.68rem;
+        justify-content: center;
+        text-align: center;
+      }
+      .top-strip-left {
+        display: none;
+      }
+      header {
+        height: 68px;
+        padding: 0 14px;
+        position: relative;
+      }
+      .brand-logo-wrap {
+        position: static;
+        transform: none;
+        text-align: left;
+      }
+      .brand-logo-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.18em;
+      }
+      .brand-logo-tag {
+        font-size: 0.55rem;
+        letter-spacing: 0.25em;
+      }
+      .btn-concierge {
+        padding: 8px 16px;
+        font-size: 0.72rem;
+      }
+      .hero-section {
+        min-height: auto;
+        padding: 50px 14px 60px;
+      }
+      .hero-tag {
+        font-size: 0.72rem;
+        margin-bottom: 16px;
+      }
+      .hero-headline {
+        font-size: 2.3rem;
+        margin-bottom: 18px;
+      }
+      .hero-subhead {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+      .btn-hero-primary, .btn-hero-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 0.8rem;
+      }
+      .section-selector {
+        padding: 60px 14px;
+      }
+      .selector-title {
+        font-size: 2.2rem;
+      }
+      .shape-grid {
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 14px;
+        gap: 10px;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .shape-item {
+        flex: 0 0 100px;
+        min-width: 100px;
+        padding: 14px 10px;
+        scroll-snap-align: start;
+      }
+      .shape-svg {
+        width: 36px;
+        height: 36px;
+      }
+      .shape-name {
+        font-size: 0.72rem;
+      }
+      .carat-bar {
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+      .carat-pill {
+        padding: 8px 14px;
+        font-size: 0.78rem;
+      }
+      .config-output-box {
+        padding: 24px 18px;
+        gap: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .config-details h4 {
+        font-size: 1.4rem;
+      }
+      .config-price {
+        font-size: 2rem;
+      }
+      .config-cta {
+        width: 100%;
+      }
+      .config-cta a {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        box-sizing: border-box;
+      }
+      .section-products {
+        padding: 60px 14px;
+      }
+      .products-title {
+        font-size: 2.2rem;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .product-img-frame {
+        height: 280px;
+      }
+      .section-bcorp {
+        padding: 60px 14px;
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+      }
+      .bcorp-content {
+        text-align: center;
+      }
+      .bcorp-headline {
+        font-size: 2rem;
+      }
+      footer {
+        padding: 50px 14px 30px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      /* Sticky Mobile Quick Bar */
+      .mobile-sticky-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        display: flex;
+        gap: 10px;
+        padding: 10px 14px;
+        background: rgba(13, 12, 12, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(165, 216, 255, 0.25);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      }
+      .mobile-sticky-bar a {
+        flex: 1;
+        padding: 12px 14px;
+        border-radius: 40px;
+        font-family: var(--font-sans);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        text-decoration: none;
+      }
+      .msb-wa {
+        background: var(--diamond-cyan);
+        color: #000000;
+      }
+      .msb-lap {
+        background: rgba(255, 255, 255, 0.1);
+        color: #FFFFFF;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
     }
   </style>
 </head>
@@ -926,5 +1127,15 @@
     }
   </script>
 
+  <!-- Sticky Bottom Action Bar for Mobile -->
+  <div class="mobile-sticky-bar">
+    <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20um%20concierge%20Aether%20Diamonds" target="_blank" class="msb-wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg>
+      <span>Concierge WhatsApp</span>
+    </a>
+    <a href="#selector" class="msb-lap">
+      <span>Ver Lapidações</span>
+    </a>
+  </div>
 </body>
 </html>

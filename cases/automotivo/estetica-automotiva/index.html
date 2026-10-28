@@ -852,6 +852,9 @@
       font-size: 0.8rem;
     }
 
+    /* Mobile Sticky Bar default hidden on desktop */
+    .mobile-sticky-bar { display: none; }
+
     /* Responsive */
     @media (max-width: 992px) {
       .about-header { grid-template-columns: 1fr; gap: 30px; }
@@ -859,11 +862,198 @@
       .footer-top { grid-template-columns: 1fr 1fr; }
       .top-menu { display: none; }
     }
-    @media (max-width: 600px) {
-      .footer-top { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
-      .cta-strip-buttons { width: 100%; }
-      .btn-whatsapp-large, .btn-tds-modal { width: 100%; justify-content: center; }
+
+    /* ==========================================================================
+       ADVANCED MOBILE RESPONSIVENESS (320px - 768px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 68px;
+      }
+      body {
+        padding-bottom: 74px; /* Space for mobile sticky action bar */
+        overflow-x: hidden;
+      }
+      .top-strip {
+        padding: 6px 14px;
+        font-size: 0.68rem;
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+      }
+      .top-strip-left {
+        justify-content: center;
+        gap: 8px;
+      }
+      .top-strip-right {
+        display: none;
+      }
+      header {
+        padding: 0 14px;
+      }
+      .brand-logo svg {
+        width: 120px;
+        height: auto;
+      }
+      .brand-badge {
+        font-size: 0.7rem;
+        padding-left: 8px;
+        margin-left: -6px;
+      }
+      .lang-switcher, .btn-search {
+        display: none;
+      }
+      .btn-contact-header {
+        padding: 8px 14px;
+        font-size: 0.75rem;
+      }
+      .hero-slide {
+        padding: 40px 14px 100px;
+        justify-content: flex-end;
+      }
+      .hero-slide-content {
+        max-width: 100%;
+      }
+      .hero-headline {
+        font-size: 2.6rem;
+        line-height: 0.95;
+        margin-bottom: 20px;
+      }
+      .large-cta {
+        padding: 12px 24px;
+        font-size: 0.82rem;
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+      .swiper-controls {
+        bottom: 24px;
+        right: 14px;
+        left: 14px;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .swiper-btn {
+        width: 44px;
+        height: 44px;
+      }
+      .section-about {
+        padding: 60px 16px;
+      }
+      .about-header {
+        margin-bottom: 40px;
+      }
+      .section-num-title {
+        font-size: 2.5rem;
+      }
+      .about-lead {
+        font-size: 1.25rem;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 14px;
+        padding-top: 30px;
+      }
+      .stat-number {
+        font-size: 3.8rem;
+      }
+      .stat-label {
+        font-size: 0.85rem;
+      }
+      .stat-desc {
+        font-size: 0.82rem;
+      }
+      .section-products {
+        padding: 60px 16px;
+      }
+      .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 36px;
+        padding-bottom: 20px;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .product-card {
+        padding: 20px;
+      }
+      .section-spotlight {
+        padding: 60px 16px;
+      }
+      .spotlight-card {
+        padding: 26px 20px;
+      }
+      .spotlight-title {
+        font-size: 2.2rem;
+      }
+      .section-cta-strip {
+        padding: 60px 16px;
+      }
+      .cta-headline {
+        font-size: 2.2rem;
+      }
+      .cta-strip-buttons {
+        width: 100%;
+      }
+      .btn-whatsapp-large, .btn-tds-modal {
+        width: 100%;
+        justify-content: center;
+      }
+      footer {
+        padding: 60px 16px 30px;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      /* Sticky Mobile Quick Bar */
+      .mobile-sticky-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        display: flex;
+        gap: 10px;
+        padding: 10px 14px;
+        background: rgba(14, 13, 27, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      }
+      .mobile-sticky-bar a {
+        flex: 1;
+        padding: 12px 14px;
+        border-radius: 999px;
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        text-decoration: none;
+      }
+      .msb-wa {
+        background: #25D366;
+        color: #FFFFFF;
+      }
+      .msb-prod {
+        background: var(--color-purple);
+        color: #FFFFFF;
+      }
     }
   </style>
 </head>
@@ -1364,5 +1554,15 @@
     autoSlideTimer = setInterval(nextSlide, 6500);
   </script>
 
+  <!-- Sticky Bottom Action Bar for Mobile -->
+  <div class="mobile-sticky-bar">
+    <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20t%C3%A9cnicas%20sobre%20os%20produtos%20HB%20BODY" target="_blank" class="msb-wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg>
+      <span>Suporte Técnico</span>
+    </a>
+    <a href="#products" class="msb-prod">
+      <span>Ver Produtos</span>
+    </a>
+  </div>
 </body>
 </html>
