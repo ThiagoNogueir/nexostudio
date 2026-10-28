@@ -1,608 +1,1425 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR" class="js">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Origens Bistrô Contemporâneo — Restaurante</title>
-  <meta name="description" content="Gastronomia autoral, ingredientes frescos de produtores locais e carta de vinhos selecionada." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tòpas — Tapas, Pinchos &amp; Bar | Cambuí, Campinas</title>
+  <meta name="description" content="Tòpas — Tapas &amp; Bar. Descubra a nova cozinha hispano-brasileira no Cambuí. Pinchos artesanais na chapa, cazuelas borbulhantes, jamón ibérico e chopp artesanal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Barlow+Condensed:wght@700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ==========================================================================
+       Tòpas by Nexo — Clone Fiel de bar-topas.ch
+       Charte : Vermelho #B21236 + Creme #EFEFE3, acentos amarelo #FEB914 e laranja.
+       ========================================================================== */
     :root {
-      --primary: #D97706;
-      --dark: #1F1206;
-      --accent: #F59E0B;
-      --bg: #FDFBF7;
-      --paper: #FFFFFF;
-      --text: #1E293B;
-      --muted: #64748B;
-      --line: rgba(15, 23, 42, 0.08);
-      --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --radius: 14px;
-      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+      --rouge: #B21236;
+      --creme: #EFEFE3;
+      --creme-fond: #EDEAE0;
+      --jaune: #FEB914;
+      --orange: #FE8826;
+      --orange-rouge: #F03812;
+      --bleu: #2C9FA2;
+      --bordeaux: #7C1820;
+      --f-title: "Archivo", "Arial Black", sans-serif;
+      --f-cond: "Barlow Condensed", sans-serif;
+      --f-text: "Source Sans 3", Arial, sans-serif;
+      --gutter: clamp(16px, 4vw, 56px);
+      --radius: 22px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+      --topbar-h: 76px;
+      --wave: clamp(14px, 1.6vw, 26px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      background: var(--rouge);
+      color: var(--creme);
+      scrollbar-color: var(--creme) var(--rouge);
+      scroll-behavior: smooth;
     }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.6;
+      margin: 0;
+      min-height: 100vh;
+      background: var(--rouge);
+      color: var(--creme);
+      font-family: var(--f-text);
+      font-size: clamp(17px, 1.05vw + 10px, 21px);
+      line-height: 1.45;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    /* Top Ribbon Nexo */
-    .nexo-bar {
-      background: #0B0F14;
-      color: #94A3B8;
-      font-size: 12px;
-      padding: 8px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    img, svg { display: block; max-width: 100%; }
+    img { height: auto; }
+    a { color: inherit; text-decoration: none; }
+    p, h1, h2, h3, figure, dl, dd, ol, ul { margin: 0; }
+    ol, ul { padding: 0; list-style: none; }
+    ::selection { background: var(--jaune); color: var(--rouge); }
+
+    /* ==========================================
+       Preloader Intro Screen (Identical to bar-topas.ch)
+       ========================================== */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      background: var(--rouge);
+      transition: opacity 0.6s var(--ease), visibility 0.6s;
     }
-    .nexo-bar a { color: #38BDF8; font-weight: 600; text-decoration: none; }
-    .nexo-bar a:hover { text-decoration: underline; }
-    
-    /* Top Info Bar */
-    .top-info {
-      background: var(--dark);
-      color: #CBD5E1;
-      font-size: 12.5px;
-      padding: 8px 32px;
+    .intro.is-loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .intro__panels {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      pointer-events: none;
+    }
+    .intro__panels span { background: var(--c); }
+    .intro__wait {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      gap: 22px;
+      text-align: center;
+    }
+    .intro__pincho {
+      width: 80px;
+      height: 80px;
+      color: var(--creme);
+      animation: pincho-hop 1s cubic-bezier(.3, 0, .3, 1) infinite;
+    }
+    @keyframes pincho-hop {
+      0%, 100% { transform: translateY(0) scale(1.12, .86); }
+      18% { transform: translateY(0) scale(.94, 1.08); }
+      50% { transform: translateY(-40px) rotate(-8deg) scale(1); }
+      82% { transform: translateY(0) scale(.96, 1.04); }
+    }
+    .intro__msg {
+      font-family: var(--f-text);
+      font-weight: 700;
+      font-size: clamp(16px, 1.2vw + 10px, 22px);
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: #7C1820;
+      color: var(--creme);
+      box-shadow: 0 16px 40px -10px rgba(0,0,0,0.4);
+    }
+    .intro__bar {
+      width: min(60vw, 300px);
+      height: 6px;
+      border-radius: 6px;
+      background: rgba(239, 239, 227, 0.25);
+      overflow: hidden;
+    }
+    .intro__bar i {
+      display: block;
+      height: 100%;
+      background: var(--jaune);
+      width: 0%;
+      animation: load-bar 1.8s forwards cubic-bezier(.2, .8, .2, 1);
+    }
+    @keyframes load-bar {
+      0% { width: 0%; }
+      60% { width: 75%; }
+      100% { width: 100%; }
+    }
+
+    /* ==========================================
+       Topbar (Identical layout to bar-topas.ch)
+       ========================================== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--topbar-h);
+      padding: 0 var(--gutter);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      background: var(--rouge);
+      border-bottom: 2px solid rgba(239, 239, 227, 0.15);
+    }
+    .topbar__logo svg {
+      width: 120px;
+      height: auto;
+      transition: transform 0.3s var(--ease);
+    }
+    .topbar__logo:hover svg {
+      transform: scale(1.05) rotate(-2deg);
+    }
+    .topbar__status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(239, 239, 227, 0.08);
+      font-family: var(--f-title);
+      font-size: clamp(11px, 0.8vw + 6px, 14px);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--creme);
+    }
+    .topbar__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4EFA90;
+      box-shadow: 0 0 10px #4EFA90;
+      animation: dot-pulse 1.8s infinite;
+    }
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .topbar__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: clamp(12px, 0.75vw + 7px, 15px);
+      text-transform: uppercase;
+      color: var(--jaune);
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(254, 185, 20, 0.3);
+      transition: all 0.25s;
+    }
+    .topbar__link:hover {
+      background: var(--jaune);
+      color: var(--rouge);
+    }
+    .topbar__link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ==========================================
+       Hero Section (Exact layout of bar-topas.ch)
+       ========================================== */
+    .s-hero {
+      position: relative;
+      padding: clamp(30px, 4vw, 60px) var(--gutter) 60px;
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 85vh;
+      justify-content: space-between;
+    }
+    .s-hero__kicker {
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: clamp(13px, 1vw + 7px, 18px);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--creme);
+      margin-bottom: 20px;
+    }
+    .s-hero__by {
+      color: var(--jaune);
+    }
+
+    /* Giant Vector Title */
+    .s-hero__title {
+      width: 100%;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+    .s-hero__title svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Central 3D Food Plate Fallback / View */
+    .s-hero__view {
+      position: relative;
+      width: min(85vw, 680px);
+      margin: 20px auto;
+      z-index: 2;
+    }
+    .s-hero__view img {
+      width: 100%;
+      filter: drop-shadow(0 25px 40px rgba(0,0,0,0.4));
+      transition: transform 0.6s var(--ease);
+    }
+    .s-hero__view:hover img {
+      transform: scale(1.04) rotate(1.5deg);
+    }
+
+    /* Hero Foot & Live Countdown */
+    .s-hero__foot {
+      width: 100%;
+      max-width: 900px;
+      margin: 20px auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 3;
+    }
+    .s-hero__tagline {
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--creme);
+    }
+    .countdown--hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--creme);
+      color: var(--rouge);
+      padding: 12px 28px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .countdown__label {
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: clamp(12px, 0.8vw + 6px, 15px);
+      text-transform: uppercase;
+    }
+    .countdown__clock {
+      display: flex;
+      gap: 10px;
+      font-family: var(--f-title);
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+    .countdown__clock span {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+    .countdown__clock i {
+      font-family: var(--f-text);
+      font-style: normal;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: lowercase;
+    }
+
+    /* Rotating Circular SVG Stamp (Exact replica) */
+    .s-hero__stamp {
+      position: absolute;
+      right: clamp(20px, 6vw, 80px);
+      top: clamp(100px, 18vw, 220px);
+      width: clamp(120px, 13vw, 175px);
+      height: clamp(120px, 13vw, 175px);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .s-hero__stamp svg.stamp-ring {
+      width: 100%;
+      height: 100%;
+      animation: stamp-spin 18s linear infinite;
+      fill: var(--creme);
+      font-family: var(--f-title);
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+    @keyframes stamp-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .stamp__icon-center {
+      position: absolute;
+      inset: 28%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+    }
+
+    /* ==========================================
+       Double Marquee Banners (Identical to bar-topas.ch)
+       ========================================== */
+    .s-marquee {
+      width: 100%;
+      overflow: hidden;
+      background: var(--creme);
+      color: var(--rouge);
+      padding: 16px 0;
+      display: flex;
+      flex-direction: column;
       gap: 10px;
     }
-    .top-info b { color: #fff; font-weight: 600; }
+    .marquee__track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 25s linear infinite;
+    }
+    .marquee--b .marquee__track {
+      animation: marquee-scroll-rev 22s linear infinite;
+    }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes marquee-scroll-rev {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0); }
+    }
+    .marquee__group {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding-right: 28px;
+    }
+    .marquee__word {
+      font-family: var(--f-title);
+      font-weight: 900;
+      font-size: clamp(2rem, 3.8vw, 3.6rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .marquee__word--alt {
+      color: var(--orange-rouge);
+    }
+    .marquee__star {
+      font-size: 2rem;
+      color: var(--jaune);
+    }
+    .marquee__icon {
+      width: 38px;
+      height: 38px;
+      fill: currentColor;
+    }
 
-    /* Header */
-    .header {
-      background: var(--paper);
-      padding: 18px 32px;
+    /* ==========================================
+       Definition Section with Floating Parallax Photos & Dictionary Stamp
+       ========================================== */
+    .s-def {
+      position: relative;
+      background: var(--creme);
+      color: var(--rouge);
+      padding: 120px var(--gutter);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+    }
+    .s-def__photo {
+      position: absolute;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      border: 4px solid var(--creme);
+      z-index: 1;
+    }
+    .s-def__photo--a {
+      left: clamp(20px, 8vw, 120px);
+      top: 80px;
+      width: clamp(220px, 24vw, 380px);
+      aspect-ratio: 4/5;
+      transform: rotate(-4deg);
+    }
+    .s-def__photo--b {
+      right: clamp(20px, 8vw, 120px);
+      bottom: 60px;
+      width: clamp(240px, 26vw, 420px);
+      aspect-ratio: 3/2;
+      transform: rotate(3deg);
+    }
+    .s-def__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Dictionary Stamp Card */
+    .stamp-card {
+      position: relative;
+      z-index: 3;
+      background: var(--creme-fond);
+      border: 3px solid var(--rouge);
+      border-radius: 28px;
+      padding: clamp(32px, 5vw, 64px);
+      max-width: 680px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(178, 18, 54, 0.15);
+      text-align: left;
+    }
+    .s-def__head {
+      margin-bottom: 24px;
+      border-bottom: 2px dashed rgba(178, 18, 54, 0.2);
+      padding-bottom: 18px;
+    }
+    .s-def__word {
+      font-family: var(--f-title);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.9;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--rouge);
+    }
+    .s-def__phon {
+      font-family: var(--f-cond);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--orange-rouge);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .s-def__phon em {
+      font-family: var(--f-text);
+      font-style: italic;
+      text-transform: lowercase;
+      color: #66101F;
+    }
+    .s-def__text {
+      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+      line-height: 1.6;
+      color: #2D050B;
+      margin-bottom: 24px;
+    }
+    .s-def__text mark {
+      background: var(--jaune);
+      color: var(--rouge);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .s-def__syn {
+      font-size: 0.95rem;
+      color: #7C1820;
+      margin-bottom: 24px;
+    }
+    .s-def__syn mark {
+      font-weight: 700;
+      background: rgba(254, 185, 20, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .s-def__sign {
+      display: flex;
+      justify-content: flex-end;
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--rouge);
+      transform: rotate(-3deg);
+    }
+
+    /* ==========================================
+       Wavy Edge Divider (.edge-wave)
+       ========================================== */
+    .edge-wave {
+      position: relative;
+    }
+    .edge-wave::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: 0;
+      right: 0;
+      height: 25px;
+      background-repeat: repeat-x;
+      background-size: 50px 25px;
+      background-image: radial-gradient(circle at 25px 0px, transparent 24px, currentColor 25px);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ==========================================
+       5-Step Pincho Build Section (.s-build)
+       ========================================== */
+    .s-build {
+      background: var(--rouge);
+      color: var(--creme);
+      padding: 100px var(--gutter);
+      text-align: center;
+    }
+    .s-build__kicker {
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--jaune);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .s-build__title {
+      font-family: var(--f-title);
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+    }
+    .s-build__steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto 60px;
+      text-align: left;
+    }
+    .s-build__step {
+      background: rgba(239, 239, 227, 0.08);
+      border: 2px solid rgba(239, 239, 227, 0.15);
+      border-radius: 18px;
+      padding: 26px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+    .s-build__step:hover {
+      background: var(--creme);
+      color: var(--rouge);
+      border-color: var(--jaune);
+      transform: translateY(-6px);
+    }
+    .s-build__num {
+      font-family: var(--f-title);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--jaune);
+      line-height: 1;
+    }
+    .s-build__step:hover .s-build__num {
+      color: var(--rouge);
+    }
+    .s-build__name {
+      font-family: var(--f-title);
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .s-build__desc {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    /* Result Card */
+    .s-build__result {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--creme);
+      color: var(--rouge);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .s-build__result h3 {
+      font-family: var(--f-title);
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .s-build__result p {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* ==========================================
+       Horizontal Card Track Gallery (.s-gallery)
+       ========================================== */
+    .s-gallery {
+      background: var(--creme);
+      color: var(--rouge);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .s-gallery__head {
+      padding: 0 var(--gutter);
+      margin-bottom: 40px;
+    }
+    .s-gallery__kicker {
+      font-family: var(--f-title);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--orange-rouge);
+      margin-bottom: 8px;
+    }
+    .s-gallery__title {
+      font-family: var(--f-title);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 0.92;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .s-gallery__track {
+      display: flex;
+      gap: 30px;
+      padding: 20px var(--gutter);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+    }
+    .card {
+      flex: 0 0 clamp(280px, 32vw, 400px);
+      scroll-snap-align: start;
+      background: var(--creme-fond);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid var(--rouge);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .card--low {
+      transform: translateY(30px);
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(178, 18, 54, 0.2);
+    }
+    .card__media {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover .card__media img {
+      transform: scale(1.08);
+    }
+    .card__num {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--rouge);
+      color: var(--creme);
+      font-family: var(--f-title);
+      font-size: 0.9rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .card__body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card__title {
+      font-family: var(--f-title);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+    .card__desc {
+      font-size: 0.95rem;
+      color: #3C0A14;
+      line-height: 1.45;
+    }
+    .card__foot {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 50;
-      box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(178, 18, 54, 0.2);
     }
-    .logo {
+    .card__price {
+      font-family: var(--f-title);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--rouge);
+    }
+    .btn-card-order {
+      background: var(--rouge);
+      color: var(--creme);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: var(--f-title);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-card-order:hover {
+      background: var(--jaune);
+      color: var(--rouge);
+    }
+
+    /* ==========================================
+       Schedule & Hours Section (.s-hours)
+       ========================================== */
+    .s-hours {
+      background: var(--rouge);
+      color: var(--creme);
+      padding: 100px var(--gutter);
+      text-align: center;
+    }
+    .s-hours__k {
+      font-family: var(--f-title);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--jaune);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .s-hours__title {
+      font-family: var(--f-title);
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+    .hours {
+      max-width: 780px;
+      margin: 0 auto 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hours__row {
+      background: rgba(239, 239, 227, 0.08);
+      border: 2px solid rgba(239, 239, 227, 0.15);
+      border-radius: 16px;
+      padding: 22px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.25s;
+    }
+    .hours__row:hover {
+      background: var(--creme);
+      color: var(--rouge);
+      border-color: var(--jaune);
+    }
+    .hours__days {
+      font-family: var(--f-title);
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hours__time {
+      font-family: var(--f-title);
+      font-size: 1.3rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 12px;
-      text-decoration: none;
-      color: var(--dark);
     }
-    .logo-badge {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff; display: grid; place-items: center; font-size: 20px; font-weight: 800;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    }
-    .logo-info b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-    .logo-info small { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
-    
-    .nav { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s; }
-    .nav a:hover { color: var(--primary); }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 12px 24px; border-radius: 999px;
-      font-size: 13.5px; font-weight: 700; text-decoration: none;
-      transition: all .25s ease;
-    }
-    .btn-primary {
-      background: var(--primary); color: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .btn-outline {
-      background: transparent; color: var(--text); border: 1.5px solid var(--line);
-    }
-    .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: #fff; }
-    .btn-block { width: 100%; }
-    .btn-sm {
-      background: var(--primary); color: #fff; font-size: 12px; font-weight: 700;
-      padding: 7px 16px; border-radius: 999px; text-decoration: none;
+    .hours__today {
+      background: var(--jaune);
+      color: var(--rouge);
+      font-family: var(--f-title);
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
     }
 
-    /* Hero */
-    .hero {
-      padding: 64px 32px 72px;
-      max-width: 1240px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px;
+    /* ==========================================
+       Visit, Map & WhatsApp Booking (.s-visit)
+       ========================================== */
+    .s-visit {
+      background: var(--creme);
+      color: var(--rouge);
+      padding: 100px var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1300px;
+      margin: 0 auto;
       align-items: center;
     }
-    .rating-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #FFFFFF; border: 1px solid var(--line);
-      padding: 6px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700;
-      color: var(--dark); margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    .s-visit__k {
+      font-family: var(--f-title);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--orange-rouge);
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
-    .rating-pill span { color: #F59E0B; }
-    .hero h1 {
-      font-size: clamp(34px, 4.2vw, 52px);
-      font-weight: 800; letter-spacing: -0.03em; line-height: 1.14;
-      color: var(--dark);
+    .s-visit__title {
+      font-family: var(--f-title);
+      font-size: clamp(3rem, 5vw, 4.6rem);
+      line-height: 0.95;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
-    .hero h1 em { font-style: normal; color: var(--primary); }
-    .hero p {
-      margin-top: 18px; font-size: 16.5px; color: var(--muted);
-      max-width: 540px; line-height: 1.65;
+    .s-visit__address {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 30px;
     }
-    .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
-    .trust-row {
-      display: flex; gap: 20px; margin-top: 36px;
-      font-size: 12.5px; color: var(--muted); font-weight: 600; flex-wrap: wrap;
+    .s-visit__actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .trust-row span { display: flex; align-items: center; gap: 6px; color: var(--dark); }
-
-    /* Interactive Box */
-    .interactive-box {
-      background: var(--paper); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 32px;
-      box-shadow: var(--shadow);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-family: var(--f-title);
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      transition: all 0.25s;
     }
-    .box-badge {
-      display: inline-block; font-size: 11px; font-weight: 800;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--primary); background: rgba(0,0,0,0.03);
-      padding: 4px 10px; border-radius: 6px; margin-bottom: 8px;
+    .btn--rouge {
+      background: var(--rouge);
+      color: var(--creme);
+      box-shadow: 0 10px 30px rgba(178, 18, 54, 0.3);
     }
-    .box-head h3 { font-size: 20px; font-weight: 800; color: var(--dark); }
-    .box-head p { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
-    
-    /* Chips */
-    .date-chips { display: flex; gap: 10px; margin: 20px 0 16px; overflow-x: auto; padding-bottom: 6px; }
-    .chip {
-      background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
-      padding: 10px 16px; text-align: center; cursor: pointer; min-width: 80px;
-      transition: all .2s; font-family: inherit;
+    .btn--rouge:hover {
+      background: #800A23;
+      transform: translateY(-2px);
     }
-    .chip.is-active, .chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-    .chip b { display: block; font-size: 13px; }
-    .chip span { font-size: 11px; opacity: .85; }
-    .time-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-    .time-tag {
-      background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
-      padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer;
+    .btn--line {
+      border: 2px solid var(--rouge);
+      color: var(--rouge);
     }
-    .time-tag.is-active, .time-tag:hover { background: var(--dark); color: #fff; }
-    .box-action { margin-top: 16px; }
-
-    /* Form */
-    .quote-form { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .quote-form input, .quote-form select, .quote-form textarea {
-      width: 100%; padding: 12px 14px; border-radius: 8px;
-      border: 1px solid var(--line); background: var(--bg);
-      font-family: inherit; font-size: 13.5px; color: var(--text);
+    .btn--line:hover {
+      background: var(--rouge);
+      color: var(--creme);
     }
 
-    /* Catalog Grid */
-    .catalog-grid { display: flex; flex-direction: column; gap: 12px; margin: 18px 0; }
-    .cat-item {
-      background: var(--bg); border: 1px solid var(--line);
-      border-radius: 10px; padding: 14px 16px;
+    /* Booking Card on Right */
+    .res-card-box {
+      background: var(--creme-fond);
+      border: 3px solid var(--rouge);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     }
-    .cat-badge { font-size: 10.5px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
-    .cat-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-top: 2px; }
-    .cat-item p { font-size: 12px; color: var(--muted); }
-    .cat-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
-    .cat-foot b { font-size: 16px; color: var(--dark); font-weight: 800; }
-
-    /* Curriculum Cards */
-    .curriculum-list { display: flex; flex-direction: column; gap: 12px; margin: 18px 0; }
-    .curr-card { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
-    .curr-tag { font-size: 10.5px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
-    .curr-card h4 { font-size: 14.5px; font-weight: 700; color: var(--dark); }
-    .curr-card p { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .curr-card small { font-size: 11px; color: var(--primary); font-weight: 600; display: block; margin-top: 6px; }
-
-    /* Services Section */
-    .services-sec {
-      background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      padding: 72px 32px;
+    .res-card-box h3 {
+      font-family: var(--f-title);
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
-    .sec-container { max-width: 1240px; margin: 0 auto; }
-    .sec-head { text-align: center; margin-bottom: 48px; }
-    .sec-head small {
-      display: inline-block; font-size: 11.5px; font-weight: 800;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--primary); margin-bottom: 6px;
+    .res-card-box p {
+      font-size: 1rem;
+      margin-bottom: 24px;
     }
-    .sec-head h2 { font-size: clamp(28px, 3.2vw, 38px); font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
-    .sec-head p { font-size: 15px; color: var(--muted); margin-top: 8px; max-width: 600px; margin-inline: auto; }
-
-    .services-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+    .form-group {
+      margin-bottom: 16px;
     }
-    .service-card {
-      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 28px 22px; display: flex; flex-direction: column;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+    .form-group label {
+      display: block;
+      font-family: var(--f-title);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
-    .service-card:hover {
-      transform: translateY(-4px); box-shadow: var(--shadow);
-      border-color: var(--primary);
+    .form-control {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 2px solid rgba(178, 18, 54, 0.3);
+      background: #FFF;
+      font-family: var(--f-text);
+      font-size: 1rem;
+      color: #111;
     }
-    .srv-badge {
-      font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--primary); margin-bottom: 8px;
+    .form-control:focus {
+      outline: none;
+      border-color: var(--rouge);
     }
-    .service-card h4 { font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.3; }
-    .service-card p { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; flex: 1; }
-    .srv-price { margin: 18px 0 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
-    .srv-price small { display: block; font-size: 11px; text-transform: uppercase; color: var(--muted); }
-    .srv-price b { font-size: 18px; font-weight: 800; color: var(--dark); }
-    .srv-link {
-      font-size: 12.5px; font-weight: 700; color: var(--primary); text-decoration: none;
-      display: inline-flex; align-items: center; gap: 4px;
+    .btn-submit-booking {
+      width: 100%;
+      background: var(--rouge);
+      color: var(--creme);
+      border: none;
+      padding: 18px;
+      border-radius: 999px;
+      font-family: var(--f-title);
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 10px 30px rgba(178, 18, 54, 0.3);
+      transition: all 0.25s;
     }
-
-    /* Pillars */
-    .pillars-sec { padding: 72px 32px; max-width: 1240px; margin: 0 auto; }
-    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .pillar-card {
-      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 32px 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    .btn-submit-booking:hover {
+      background: var(--jaune);
+      color: var(--rouge);
     }
-    .pillar-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--bg); color: var(--primary); display: grid; place-items: center;
-      font-size: 22px; margin-bottom: 18px;
-    }
-    .pillar-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .pillar-card p { font-size: 14px; color: var(--muted); }
-
-    /* Testimonials */
-    .testi-sec { background: var(--paper); padding: 72px 32px; border-top: 1px solid var(--line); }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1240px; margin: 0 auto; }
-    .testi-card {
-      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 28px 24px;
-    }
-    .testi-stars { color: #F59E0B; margin-bottom: 12px; font-size: 14px; }
-    .testi-card p { font-size: 13.5px; color: var(--text); font-style: italic; line-height: 1.6; }
-    .testi-user { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
-    .user-avatar {
-      width: 38px; height: 38px; border-radius: 50%; background: var(--primary);
-      color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center;
-    }
-    .user-info b { display: block; font-size: 13.5px; font-weight: 700; color: var(--dark); }
-    .user-info small { font-size: 11.5px; color: var(--muted); }
-
-    /* FAQ */
-    .faq-sec { padding: 72px 32px; max-width: 860px; margin: 0 auto; }
-    .faq-item {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
-      margin-bottom: 12px; overflow: hidden;
-    }
-    .faq-item summary {
-      padding: 18px 22px; font-size: 15px; font-weight: 700; color: var(--dark);
-      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: "+"; font-size: 18px; color: var(--primary); font-weight: 800; }
-    .faq-item[open] summary::after { content: "−"; }
-    .faq-content { padding: 0 22px 20px; font-size: 14px; color: var(--muted); line-height: 1.6; }
 
     /* Footer */
-    .footer {
-      background: var(--dark); color: #94A3B8; padding: 60px 32px 32px; font-size: 13px;
+    footer {
+      background: #1A0407;
+      color: var(--creme);
+      padding: 50px var(--gutter);
+      text-align: center;
+      font-family: var(--f-title);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
-    .footer-inner {
-      max-width: 1240px; margin: 0 auto; display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer h5 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
-    .footer p { line-height: 1.6; max-width: 320px; }
-    .footer-bottom {
-      max-width: 1240px; margin: 24px auto 0; display: flex;
-      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-      font-size: 12px;
-    }
-    .footer-bottom a { color: var(--accent); text-decoration: none; }
 
-    /* WhatsApp Float */
-    .wa-float {
-      position: fixed; right: 24px; bottom: 24px; z-index: 99;
-      width: 58px; height: 58px; border-radius: 50%;
-      background: #25D366; color: #fff; display: grid; place-items: center;
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
-      transition: transform .3s ease; text-decoration: none;
-    }
-    .wa-float:hover { transform: scale(1.1); }
-    .wa-float svg { width: 32px; height: 32px; fill: currentColor; }
-
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; padding: 40px 20px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .pillars-grid, .testi-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .nav { display: none; }
-    }
-    @media (max-width: 640px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .s-visit { grid-template-columns: 1fr; }
+      .s-def__photo { display: none; }
+      .topbar__status span:last-child { display: none; }
     }
   </style>
 </head>
 <body>
-  <!-- Top Ribbon Nexo -->
-  <aside class="nexo-bar">
-    <span>✦ Modelo Demonstrativo Comercial · <b>Restaurante</b></span>
-    <a href="../../../index.html">Criado por Nexo Studio — Solicite um site igual para sua empresa →</a>
-  </aside>
 
-  <!-- Top Info -->
-  <div class="top-info">
-    <span>Seg-Sáb: 08:00 - 19:00 &nbsp;•&nbsp; Campinas e Região Metropolitana - SP</span>
-    <span>Atendimento WhatsApp: <b>(19) 99633-1656</b></span>
+  <!-- Preloader Intro Screen -->
+  <div class="intro" id="intro">
+    <div class="intro__panels">
+      <span style="--c: var(--rouge)"></span>
+      <span style="--c: var(--orange-rouge)"></span>
+      <span style="--c: var(--orange)"></span>
+      <span style="--c: var(--jaune)"></span>
+      <span style="--c: var(--bleu)"></span>
+    </div>
+    <div class="intro__wait">
+      <div class="intro__pincho">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="50" cy="50" r="40" fill="var(--jaune)"/>
+          <path d="M50 15 L50 85 M35 40 L65 40 M30 60 L70 60" stroke="var(--rouge)" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="intro__msg" id="introMsg">Acendendo a chapa e cortando o jamón con mucho amor…</p>
+      <span class="intro__bar"><i></i></span>
+    </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="logo">
-      <div class="logo-badge">R</div>
-      <div class="logo-info">
-        <b>Origens Bistrô Contemporâneo</b>
-        <small>Restaurante</small>
-      </div>
+  <!-- Topbar -->
+  <header class="topbar">
+    <a href="#top" class="topbar__logo">
+      <!-- Oval Badge Logo like bar-topas.ch -->
+      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="50" rx="96" ry="46" fill="#EFEFE3"/>
+        <text x="100" y="58" font-family="Archivo, sans-serif" font-weight="900" font-size="34" fill="#B21236" text-anchor="middle" letter-spacing="1">TÒPAS</text>
+        <text x="100" y="78" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12" fill="#B21236" text-anchor="middle" letter-spacing="3">TAPAS &amp; BAR</text>
+      </svg>
     </a>
-    <ul class="nav">
-      <li><a href="#">Início</a></li>
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#diferenciais">Diferenciais</a></li>
-      <li><a href="#avaliacoes">Avaliações</a></li>
-      <li><a href="#duvidas">Dúvidas</a></li>
-    </ul>
-    <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+nos+servi%C3%A7os+da+Origens+Bistrô+Contemporâneo." target="_blank" class="btn btn-primary">Fale Conosco</a>
+
+    <p class="topbar__status">
+      <span class="topbar__dot"></span>
+      <span>TER A SÁB DAS 18H30 ÀS 00H · DOM DAS 12H ÀS 18H</span>
+    </p>
+
+    <a class="topbar__link" href="https://wa.me/5519996331656?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20mesa%20no%20T%C3%B2pas." target="_blank">
+      <span>Reservas WhatsApp</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="rating-pill">
-          <span>★★★★★</span> 4.9 no Google · +180 clientes satisfeitos
+  <!-- Hero Section -->
+  <section class="s-hero" id="top">
+    <!-- Rotating Circular Stamp in Corner -->
+    <div class="s-hero__stamp">
+      <svg class="stamp-ring" viewBox="0 0 200 200">
+        <defs>
+          <path id="stamp-path" d="M100,100 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0"/>
+        </defs>
+        <text><textPath href="#stamp-path">TAPAS &amp; BAR · CAMBUÍ · ¡VAMOS! · UNA MÁS ·</textPath></text>
+      </svg>
+      <div class="stamp__icon-center">🔥</div>
+    </div>
+
+    <p class="s-hero__kicker">
+      <span>Tapas &amp; Bar</span>
+      <span class="s-hero__by">by Nexo Studio</span>
+      <span>Cambuí · Campinas</span>
+    </p>
+
+    <!-- Giant Display Title -->
+    <h1 class="s-hero__title">
+      <svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="80%" font-family="Archivo, sans-serif" font-weight="900" font-size="340" fill="#EFEFE3" text-anchor="middle" letter-spacing="-10">TÒPAS</text>
+      </svg>
+    </h1>
+
+    <!-- Center Food Plate with 3D Float Shadow -->
+    <div class="s-hero__view">
+      <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/illu/pinchos-2.webp" alt="Prato de Pinchos na Plancha Tòpas">
+    </div>
+
+    <!-- Foot & Live Countdown Clock -->
+    <div class="s-hero__foot">
+      <p class="s-hero__tagline">Descubra a autêntica gastronomia hispano-brasileira no Cambuí.</p>
+
+      <div class="countdown--hero">
+        <p class="countdown__label">Cozinha Aberta Hoje</p>
+        <p class="countdown__clock">
+          <span><b>06</b><i>h</i></span>
+          <span><b>42</b><i>min</i></span>
+          <span><b>18</b><i>s</i></span>
+        </p>
+        <span style="font-family:var(--f-title); font-weight:800; color:var(--orange-rouge)">¡VAMOS!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Double Marquee Banners -->
+  <section class="s-marquee">
+    <div class="marquee marquee--a">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span class="marquee__word">Pinchos</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Cazuelas</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Jamón Bellota</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Cerveza Artesanal</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word marquee__word--alt">¡Vamos!</span>
         </div>
-        <h1>Excelência e cuidado para <em>restaurante</em> que você confia.</h1>
-        <p>Gastronomia autoral, ingredientes frescos de produtores locais e carta de vinhos selecionada.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Gostaria+de+solicitar+um+atendimento+na+Origens+Bistrô+Contemporâneo." target="_blank" class="btn btn-primary">Agendar pelo WhatsApp</a>
-          <a href="#servicos" class="btn btn-outline">Ver Especialidades</a>
+        <div class="marquee__group" aria-hidden="true">
+          <span class="marquee__word">Pinchos</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Cazuelas</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Jamón Bellota</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Cerveza Artesanal</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word marquee__word--alt">¡Vamos!</span>
         </div>
-        <div class="trust-row">
-          <span>✓ Profissionais Certificados</span>
-          <span>✓ Atendimento Humanizado</span>
-          <span>✓ Orçamento Transparente</span>
+      </div>
+    </div>
+
+    <div class="marquee marquee--b">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span class="marquee__word">Un poco de todo</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Mucho de bueno</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Una más y nos vamos</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">O ponto mais quente do Cambuí</span>
+          <span class="marquee__star">✱</span>
         </div>
+        <div class="marquee__group" aria-hidden="true">
+          <span class="marquee__word">Un poco de todo</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Mucho de bueno</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">Una más y nos vamos</span>
+          <span class="marquee__star">✱</span>
+          <span class="marquee__word">O ponto mais quente do Cambuí</span>
+          <span class="marquee__star">✱</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Definition Section with Floating Parallax Photos & Dictionary Stamp -->
+  <section class="s-def" id="definicao">
+    <figure class="s-def__photo s-def__photo--a">
+      <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/pincho-closeup-1080.webp" alt="Gros plan d'un pincho">
+    </figure>
+    <figure class="s-def__photo s-def__photo--b">
+      <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/pinchos-raclette-2-1280.webp" alt="Pinchos à raclette na brasa">
+    </figure>
+
+    <article class="stamp-card">
+      <header class="s-def__head">
+        <h2 class="s-def__word">Tòpas</h2>
+        <p class="s-def__phon"><span>[TÒ-PAS]</span> substantivo masculino • <em>quase espanhol</em></p>
+      </header>
+      <p class="s-def__text">
+        Pequeno lugar onde você chega "só para tomar um chopp", antes de pedir um pincho, depois um segundo, depois algo borbulhante na plancha para compartilhar, e no final <mark>ficar muito mais tempo que o previsto</mark>. Conhecido por provocar aumento súbito de apetite e encontros que raramente terminam na hora anunciada.
+      </p>
+      <p class="s-def__syn"><strong>Sinônimos:</strong> <mark>armadilha deliciosa</mark>, roda de amigos, brasa viva, fome repentina.</p>
+      <p class="s-def__sign">¡Una más y nos vamos!</p>
+    </article>
+  </section>
+
+  <!-- 5-Step Pincho Build Section -->
+  <section class="s-build edge-wave" style="color:var(--rouge);">
+    <p class="s-build__kicker">Pinchos · Cazuelas · Na Brasa</p>
+    <h2 class="s-build__title">Um pincho,<br>é simples.</h2>
+
+    <ol class="s-build__steps">
+      <li class="s-build__step">
+        <span class="s-build__num">01</span>
+        <span class="s-build__name">El Pan</span>
+        <span class="s-build__desc">Fatia de pão rústico de fermentação natural tostada no azeite extravirgem.</span>
+      </li>
+      <li class="s-build__step">
+        <span class="s-build__num">02</span>
+        <span class="s-build__name">El Queso</span>
+        <span class="s-build__desc">Queijo artesanal da Canastra derretendo na chapa quente. Lentamente.</span>
+      </li>
+      <li class="s-build__step">
+        <span class="s-build__num">03</span>
+        <span class="s-build__name">El Jamón</span>
+        <span class="s-build__desc">Lascas finas de presunto cru curado por 36 meses na Espanha.</span>
+      </li>
+      <li class="s-build__step">
+        <span class="s-build__num">04</span>
+        <span class="s-build__name">La Cebolla</span>
+        <span class="s-build__desc">Cebola pérola caramelizada com redução de vinho Jerez e páprica.</span>
+      </li>
+      <li class="s-build__step">
+        <span class="s-build__num">05</span>
+        <span class="s-build__name">¡El Pic!</span>
+        <span class="s-build__desc">Espeto de madeira cravado no topo. Pronto. ¡Vamos!</span>
+      </li>
+    </ol>
+
+    <div class="s-build__result">
+      <h3>O Suíço-Brasileiro</h3>
+      <p>Espetado no palito artesanal. Para comer com as mãos em uma ou duas mordidas.</p>
+    </div>
+  </section>
+
+  <!-- Horizontal Card Track Gallery (.s-gallery) -->
+  <section class="s-gallery" id="cardapio">
+    <header class="s-gallery__head">
+      <p class="s-gallery__kicker">A cozinha hispano-brasileira do Tòpas</p>
+      <h2 class="s-gallery__title">Mucho<br>deliciosa.</h2>
+    </header>
+
+    <div class="s-gallery__track">
+
+      <figure class="card">
+        <div class="card__media">
+          <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/pinchos-crevettes-2-1280.webp" alt="Pinchos aux crevettes">
+          <span class="card__num">01</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">El Chalutier de Camarão</h3>
+          <p class="card__desc">Camarões rosa salteados no alho e azeite, aioli cítrico e crocante de cebola frita.</p>
+          <div class="card__foot">
+            <span class="card__price">R$ 48</span>
+            <button class="btn-card-order" onclick="pedirPrato('El Chalutier de Camarão', 48)">Pedir no Zap &rarr;</button>
+          </div>
+        </div>
+      </figure>
+
+      <figure class="card card--low">
+        <div class="card__media">
+          <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/cazuela-chorizo-1280.webp" alt="Cazuela de chorizo">
+          <span class="card__num">02</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Cazuela de Chorizo</h3>
+          <p class="card__desc">Batatas douradas na manteiga de ervas, chorizo artesanal picante, pimentões tostados e fonduta de queijo.</p>
+          <div class="card__foot">
+            <span class="card__price">R$ 56</span>
+            <button class="btn-card-order" onclick="pedirPrato('Cazuela de Chorizo', 56)">Pedir no Zap &rarr;</button>
+          </div>
+        </div>
+      </figure>
+
+      <figure class="card">
+        <div class="card__media">
+          <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/pinchos-poulet-2-1280.webp" alt="Pinchos de frango marinado">
+          <span class="card__num">03</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Pollo al Pimentón</h3>
+          <p class="card__desc">Sobrecoxa desossada marinada em chimichurri fresco, cebola roxa em conserva e brotos de coentro.</p>
+          <div class="card__foot">
+            <span class="card__price">R$ 42</span>
+            <button class="btn-card-order" onclick="pedirPrato('Pollo al Pimentón', 42)">Pedir no Zap &rarr;</button>
+          </div>
+        </div>
+      </figure>
+
+      <figure class="card card--low">
+        <div class="card__media">
+          <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/pinchos-raclette-1-1280.webp" alt="Pincho de queijo">
+          <span class="card__num">04</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">El Suizo Canastra</h3>
+          <p class="card__desc">Pão na brasa, queijo da serra derretido sob maçarico, picles artesanal e toque de flor de sal.</p>
+          <div class="card__foot">
+            <span class="card__price">R$ 39</span>
+            <button class="btn-card-order" onclick="pedirPrato('El Suizo Canastra', 39)">Pedir no Zap &rarr;</button>
+          </div>
+        </div>
+      </figure>
+
+      <figure class="card">
+        <div class="card__media">
+          <img src="https://bar-topas.ch/wp-content/themes/emg-topas/assets/img/photos/cazuela-crevettes-1280.webp" alt="Cazuela de camarão">
+          <span class="card__num">05</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Cazuela de Frutos do Mar</h3>
+          <p class="card__desc">Polvo, lula e camarão grelhados no forno a carvão, emulsão de pimentão defumado e batatas ao murro.</p>
+          <div class="card__foot">
+            <span class="card__price">R$ 94</span>
+            <button class="btn-card-order" onclick="pedirPrato('Cazuela de Frutos do Mar', 94)">Pedir no Zap &rarr;</button>
+          </div>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- Schedule & Hours (.s-hours) -->
+  <section class="s-hours edge-wave" style="color:var(--creme);">
+    <p class="s-hours__k">A cozinha está aberta</p>
+    <h2 class="s-hours__title">Horários</h2>
+
+    <dl class="hours">
+      <div class="hours__row">
+        <dt class="hours__days">TER &amp; QUA</dt>
+        <dd class="hours__time">
+          <span>18H30</span>
+          <i>→</i>
+          <span>23H30</span>
+        </dd>
+        <span class="hours__today">¡HOY!</span>
       </div>
 
-      <!-- Interactive Module -->
-      
-        <div class="interactive-box">
-          <div class="box-head">
-            <span class="box-badge">Catálogo Digital &amp; Pedidos</span>
-            <h3>Cardápio &amp; Produtos em Destaque</h3>
-            <p>Faça seu pedido diretamente pelo WhatsApp com entrega rápida e atendimento imediato.</p>
-          </div>
-          <div class="catalog-grid">
-            <div class="cat-item">
-              <div class="cat-badge">Mais Pedido</div>
-              <h4>Opção Tradicional da Casa</h4>
-              <p>Receita clássica artesanal preparada com ingredientes frescos selecionados.</p>
-              <div class="cat-foot">
-                <b>R$ 38,00</b>
-                <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Gostaria+de+pedir+a+Opcao+Tradicional+na+Origens+Bistrô+Contemporâneo." target="_blank" class="btn-sm">Pedir Agora</a>
-              </div>
-            </div>
-            <div class="cat-item">
-              <div class="cat-badge">Especial</div>
-              <h4>Combo Especial &amp; Acompanhamentos</h4>
-              <p>A combinação perfeita para compartilhar com a família ou amigos hoje mesmo.</p>
-              <div class="cat-foot">
-                <b>R$ 65,00</b>
-                <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Gostaria+de+pedir+o+Combo+Especial+na+Origens+Bistrô+Contemporâneo." target="_blank" class="btn-sm">Pedir Agora</a>
-              </div>
-            </div>
-          </div>
-          <div class="box-action">
-            <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Gostaria+de+ver+o+card%C3%A1pio+completo+da+Origens+Bistrô+Contemporâneo." target="_blank" class="btn btn-primary">Pedir Cardápio Completo no WhatsApp →</a>
-          </div>
-        </div>
-        
-    </section>
+      <div class="hours__row">
+        <dt class="hours__days">QUI &amp; SEX</dt>
+        <dd class="hours__time">
+          <span>18H30</span>
+          <i>→</i>
+          <span>01H00</span>
+        </dd>
+        <span class="hours__today">¡HOY!</span>
+      </div>
 
-    <!-- Services -->
-    <section class="services-sec" id="servicos">
-      <div class="sec-container">
-        <div class="sec-head">
-          <small>Nossas Soluções</small>
-          <h2>Especialidades &amp; Serviços</h2>
-          <p>Conheça os principais procedimentos e serviços desenvolvidos com padrão de excelência e tecnologia.</p>
-        </div>
-        <div class="services-grid">
-          
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Atendimento Padrão & Avaliação</h4>
-        <p>Diagnóstico inicial completo, planejamento detalhado e atendimento prioritário com nossa equipe.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>R$ 45,00</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Atendimento+Padrão+&+Avaliação+da+Origens+Bistrô+Contemporâneo." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Procedimento Especializado</h4>
-        <p>Execução de serviços avançados com equipamentos de ponta, materiais certificados e garantia de satisfação.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>R$ 78,00</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Procedimento+Especializado+da+Origens+Bistrô+Contemporâneo." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Pacote Completo / Manutenção</h4>
-        <p>Acompanhamento contínuo, revisões periódicas e condições facilitadas em planos mensais ou parcelados.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>R$ 130,00</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Pacote+Completo+/+Manutenção+da+Origens+Bistrô+Contemporâneo." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Plano Personalizado / Premium</h4>
-        <p>Solução sob medida para clientes exigentes que buscam a máxima qualidade, exclusividade e suporte total.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>Sob Consulta</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Plano+Personalizado+/+Premium+da+Origens+Bistrô+Contemporâneo." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-        </div>
+      <div class="hours__row">
+        <dt class="hours__days">SÁB &amp; DOM</dt>
+        <dd class="hours__time">
+          <span>12H00</span>
+          <i>→</i>
+          <span>00H00</span>
+        </dd>
+        <span class="hours__today">¡VAMOS!</span>
       </div>
-    </section>
+    </dl>
+  </section>
 
-    <!-- Pillars -->
-    <section class="pillars-sec" id="diferenciais">
-      <div class="sec-head">
-        <small>Por que nos escolher</small>
-        <h2>Diferenciais que Fazem a Diferença</h2>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-icon">★</div>
-          <h3>Experiência Comprovada</h3>
-          <p>Equipe qualificada com anos de atuação no mercado, constante atualização e compromisso com o resultado.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">⏱</div>
-          <h3>Pontualidade &amp; Agilidade</h3>
-          <p>Respeito rigoroso ao seu tempo, agendamento organizado e respostas imediatas pelo WhatsApp.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🛡</div>
-          <h3>Garantia &amp; Segurança</h3>
-          <p>Materiais de primeira linha, ambiente higienizado e total clareza em todas as etapas do serviço.</p>
-        </div>
-      </div>
-    </section>
+  <!-- Visit & WhatsApp Reservation (.s-visit) -->
+  <section class="s-visit edge-wave" style="color:var(--rouge);">
+    <div>
+      <p class="s-visit__k">Tòpas, é no Cambuí</p>
+      <h2 class="s-visit__title">Vem<br>Provar.</h2>
 
-    <!-- Testimonials -->
-    <section class="testi-sec" id="avaliacoes">
-      <div class="sec-head">
-        <small>Depoimentos</small>
-        <h2>O que Dizem Nossos Clientes</h2>
+      <address class="s-visit__address">
+        <span>Rua Coronel Quirino, 1042</span><br>
+        <span>Cambuí — Campinas, SP</span><br>
+        <span style="color:var(--orange-rouge); font-family:var(--f-title); font-size:1.4rem;">(19) 99633-1656</span>
+      </address>
+
+      <div class="s-visit__actions">
+        <a class="btn btn--rouge" href="https://wa.me/5519996331656?text=Ol%C3%A1%20T%C3%B2pas!%20Gostaria%20de%20reservar%20uma%20mesa." target="_blank">
+          <span>Reservar Mesa no WhatsApp &rarr;</span>
+        </a>
+        <a class="btn btn--line" href="https://www.google.com/maps/search/?api=1&query=Rua+Coronel+Quirino+1042+Campinas" target="_blank">
+          <span>Como Chegar</span>
+        </a>
       </div>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Atendimento impecável do início ao fim! Fui super bem atendida e o resultado superou minhas expectativas. Recomendo de olhos fechados!"</p>
-          <div class="testi-user">
-            <div class="user-avatar">MC</div>
-            <div class="user-info">
-              <b>Mariana Costa</b>
-              <small>Cliente Verificada • Google</small>
-            </div>
+    </div>
+
+    <div class="res-card-box">
+      <h3>Reserva Imediata</h3>
+      <p>Garanta seu lugar no balcão do chef ou nas mesas do deck sem filas.</p>
+
+      <form onsubmit="handleReserva(event)">
+        <div class="form-group">
+          <label>Seu Nome</label>
+          <input type="text" id="bkNome" class="form-control" placeholder="Ex: Lucas Medeiros" required>
+        </div>
+
+        <div class="form-group">
+          <label>Data &amp; Horário</label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <input type="date" id="bkData" class="form-control" required>
+            <input type="time" id="bkHora" class="form-control" value="20:00" required>
           </div>
         </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Profissionalismo raro de encontrar hoje em dia. Preço justo, pontualidade britânica e um cuidado que faz toda a diferença."</p>
-          <div class="testi-user">
-            <div class="user-avatar">RA</div>
-            <div class="user-info">
-              <b>Rodrigo Almeida</b>
-              <small>Cliente Verificado • Google</small>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Ambiente acolhedor, comunicação clara pelo WhatsApp e serviço nota dez. Já sou cliente fiel há mais de um ano!"</p>
-          <div class="testi-user">
-            <div class="user-avatar">CF</div>
-            <div class="user-info">
-              <b>Camila Ferreira</b>
-              <small>Cliente Verificada • Google</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="faq-sec" id="duvidas">
-      <div class="sec-head">
-        <small>Tire suas dúvidas</small>
-        <h2>Perguntas Frequentes</h2>
-      </div>
-      <details class="faq-item" open>
-        <summary>Como funciona o agendamento de horários ou pedidos?</summary>
-        <div class="faq-content">
-          Você pode clicar em qualquer botão do site para falar diretamente com nossa equipe no WhatsApp. O atendimento é rápido e confirmamos sua solicitação na hora.
+        <div class="form-group">
+          <label>Número de Amigos</label>
+          <select id="bkPessoas" class="form-control">
+            <option value="2 pessoas">2 pessoas</option>
+            <option value="3 a 4 pessoas">3 a 4 pessoas</option>
+            <option value="5 a 8 pessoas">5 a 8 pessoas</option>
+            <option value="Mesa Grande 8+ pessoas">Mais de 8 pessoas</option>
+          </select>
         </div>
-      </details>
-      <details class="faq-item">
-        <summary>Quais são as formas de pagamento aceitas?</summary>
-        <div class="faq-content">
-          Aceitamos Pix com desconto, cartões de crédito em até 12x, débito e transferência bancária com emissão de nota fiscal.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>Onde fica o local de atendimento?</summary>
-        <div class="faq-content">
-          Estamos localizados em região nobre com fácil acesso, estacionamento no local e infraestrutura completa para seu conforto.
-        </div>
-      </details>
-    </section>
-  </main>
+
+        <button type="submit" class="btn-submit-booking">Confirmar Reserva via WhatsApp</button>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <h5>Origens Bistrô Contemporâneo</h5>
-        <p>Gastronomia autoral, ingredientes frescos de produtores locais e carta de vinhos selecionada.</p>
-        <p style="margin-top: 12px; font-size: 12px; color: #64748B;">Atendimento em Campinas, SP e cidades vizinhas.</p>
-      </div>
-      <div>
-        <h5>Horários de Funcionamento</h5>
-        <p>Segunda a Sexta: 08:00 às 19:00<br />Sábados: 08:00 às 14:00<br />Domingos e Feriados: Fechado</p>
-      </div>
-      <div>
-        <h5>Contato &amp; WhatsApp</h5>
-        <p>WhatsApp: (19) 99633-1656<br />E-mail: contato@restaurante.com.br<br />Campinas - SP</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Origens Bistrô Contemporâneo. Todos os direitos reservados.</span>
-      <span>Site demonstrativo desenvolvido por <a href="../../../index.html">Nexo Studio</a></span>
-    </div>
+  <footer>
+    &copy; 2026 TÒPAS TAPAS &amp; BAR · CAMBUÍ, CAMPINAS · PROJETO FLAGSHIP NEXO STUDIO
   </footer>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Vi+o+site+da+Origens+Bistrô+Contemporâneo+e+gostaria+de+um+atendimento." target="_blank" class="wa-float" aria-label="Fale conosco pelo WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
-  </a>
+  <script>
+    // Preloader Dismiss
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('intro').classList.add('is-loaded');
+      }, 900);
+    });
+
+    const dateField = document.getElementById('bkData');
+    if (dateField) {
+      const today = new Date().toISOString().split('T')[0];
+      dateField.value = today;
+      dateField.min = today;
+    }
+
+    function pedirPrato(nome, preco) {
+      const msg = `Olá Tòpas! Vi o prato *${nome}* (R$ ${preco}) no site e gostaria de saber se está saindo agora na plancha!`;
+      window.open(`https://wa.me/5519996331656?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function handleReserva(e) {
+      e.preventDefault();
+      const nome = document.getElementById('bkNome').value;
+      const data = document.getElementById('bkData').value;
+      const hora = document.getElementById('bkHora').value;
+      const pessoas = document.getElementById('bkPessoas').value;
+
+      const formatted = data ? data.split('-').reverse().join('/') : 'Hoje';
+      const msg = `Olá TÒPAS! Gostaria de reservar uma mesa:\n\n👤 *Nome:* ${nome}\n📅 *Data:* ${formatted}\n⏰ *Horário:* ${hora}\n👥 *Convidados:* ${pessoas}\n\nPodem confirmar a disponibilidade? Obrigado!`;
+      
+      window.open(`https://wa.me/5519996331656?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
 </body>
 </html>

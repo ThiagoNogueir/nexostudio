@@ -1,604 +1,1368 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR" class="theme-light">
+<!--
+  KRONOS / HB BODY Automotive Refinish Brasil
+  Clone Fiel de Alta Fidelidade: https://hbbody.com/en/home/
+  Cores, proporções de imagem 1920x1080 / 500x500, swiper fullscreen,
+  tipografia bold condensada, purple pill, big numbers f-afr-180 e dados técnicos.
+-->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veloce Detail Studio — Estética Automotiva</title>
-  <meta name="description" content="Vitrificação de pintura, polimento técnico, higienização interna e proteção cerâmica de alto nível." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>HB BODY Automotive Refinish Brasil — Giving Life Colour</title>
+  <meta name="description" content="Líder global no setor de repintura automotiva e estética de alta performance. Desde 1982 produzindo vernizes PU, primers, tintas e sistemas de mistura com precisão incomparável.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary: #E11D48;
-      --dark: #09090B;
-      --accent: #FB7185;
-      --bg: #09090B;
-      --paper: #FFFFFF;
-      --text: #1E293B;
-      --muted: #64748B;
-      --line: rgba(15, 23, 42, 0.08);
-      --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --radius: 14px;
-      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+      --color-black: #0E0D1B;
+      --color-dark: #08080E;
+      --color-purple: #7A00DF;
+      --color-purple-light: #9B51E0;
+      --color-white: #FFFFFF;
+      --color-gray-100: #F5F5F7;
+      --color-gray-200: #E5E5EA;
+      --color-gray-500: #8E8E93;
+      --font-display: 'Barlow Condensed', 'Archivo', sans-serif;
+      --font-heading: 'Archivo', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --header-height: 80px;
+      --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
     }
-    body {
-      background: var(--bg);
-      color: var(--text);
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      background: var(--color-black);
+      color: var(--color-white);
+      scroll-behavior: smooth;
       font-family: var(--font-body);
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    /* Top Ribbon Nexo */
-    .nexo-bar {
-      background: #0B0F14;
-      color: #94A3B8;
-      font-size: 12px;
-      padding: 8px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    body {
+      overflow-x: hidden;
+      background: var(--color-black);
     }
-    .nexo-bar a { color: #38BDF8; font-weight: 600; text-decoration: none; }
-    .nexo-bar a:hover { text-decoration: underline; }
-    
-    /* Top Info Bar */
-    .top-info {
-      background: var(--dark);
-      color: #CBD5E1;
-      font-size: 12.5px;
-      padding: 8px 32px;
+
+    /* Top Strip / Sub-bar */
+    .top-strip {
+      background: #050508;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 5%;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      color: var(--color-gray-500);
+      font-weight: 500;
+    }
+    .top-strip-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .top-strip-tag {
+      background: var(--color-purple);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .top-strip-right a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .top-strip-right a:hover { color: var(--color-purple-light); }
+
+    /* Header Nav (Faithful HB BODY) */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(14, 13, 27, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+    }
+    .brand-logo svg {
+      width: 178px;
+      height: 34px;
+      display: block;
+    }
+    .brand-badge {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--color-purple-light);
+      text-transform: uppercase;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      padding-left: 14px;
+    }
+
+    .top-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .top-menu > li {
+      position: relative;
+    }
+    .top-menu > li > a,
+    .top-menu > li > span {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .top-menu > li:hover > a,
+    .top-menu > li:hover > span {
+      color: var(--color-purple-light);
+    }
+
+    /* Submenu dropdown */
+    .submenu-dropdown {
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 0;
+      background: #151424;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(122, 0, 223, 0.2);
+      padding: 16px;
+      min-width: 260px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.25s var(--transition-smooth);
+      list-style: none;
+    }
+    .top-menu > li:hover .submenu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .submenu-dropdown li a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .submenu-dropdown li a:hover {
+      background: rgba(122, 0, 223, 0.2);
+      color: var(--color-purple-light);
+    }
+    .category-count {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--color-purple-light);
+      background: rgba(122, 0, 223, 0.3);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .btn-search {
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .btn-search:hover { color: var(--color-purple-light); }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .lang-switcher span.active {
+      color: var(--color-purple-light);
+    }
+
+    .btn-contact-header {
+      background: var(--color-purple);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-contact-header:hover {
+      background: var(--color-purple-light);
+      box-shadow: 0 0 20px rgba(155, 81, 224, 0.5);
+    }
+
+    /* Fullscreen Hero Slider (Identical to hbbody.com hero-swiper) */
+    .hero-slider-section {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      min-height: 640px;
+      max-height: 1080px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .slides-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+      transform: scale(1.04);
+      display: flex;
+      align-items: flex-end;
+      padding: 0 5% 100px;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      z-index: 2;
+    }
+
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(180deg, rgba(14, 13, 27, 0.3) 0%, rgba(14, 13, 27, 0.8) 70%, rgba(14, 13, 27, 0.95) 100%);
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 3;
+      max-width: 860px;
+    }
+
+    .slide-subtitle {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-purple-light);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      background: rgba(122, 0, 223, 0.25);
+      padding: 4px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(155, 81, 224, 0.4);
+    }
+
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+    }
+    .slide-title span.accent {
+      color: var(--color-purple-light);
+    }
+
+    .slide-description {
+      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+
+    .large-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 16px 36px;
+      border-radius: 40px;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .large-cta:hover {
+      background: #FFFFFF;
+      color: var(--color-black);
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    }
+    .large-cta svg.arrow {
+      width: 19px;
+      height: 20px;
+      transition: transform 0.3s;
+    }
+    .large-cta:hover svg.arrow path,
+    .large-cta:hover svg.arrow line {
+      stroke: var(--color-black);
+    }
+    .large-cta:hover svg.arrow {
+      transform: translate(3px, -3px);
+    }
+
+    /* Slider Controls (Fraction + Circular Prev/Next) */
+    .swiper-controls {
+      position: absolute;
+      bottom: 40px;
+      right: 5%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .swiper-fraction {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.1em;
+    }
+    .swiper-dots {
+      display: flex;
       gap: 10px;
     }
-    .top-info b { color: #fff; font-weight: 600; }
+    .swiper-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .swiper-dot.active {
+      background: var(--color-purple-light);
+      width: 28px;
+      border-radius: 10px;
+    }
 
-    /* Header */
-    .header {
-      background: var(--paper);
-      padding: 18px 32px;
+    .swiper-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .swiper-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(14, 13, 27, 0.6);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .swiper-btn:hover {
+      border-color: #FFFFFF;
+      background: #FFFFFF;
+      color: #000;
+    }
+    .swiper-btn:hover svg path,
+    .swiper-btn:hover svg circle {
+      stroke: #000;
+    }
+
+    /* ==========================================================================
+       SECTION 01: ABOUT US (Exact Big Numbers Layout)
+       ========================================================================== */
+    .section-about {
+      background: #FFFFFF;
+      color: var(--color-black);
+      padding: 120px 5%;
+    }
+    .about-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      margin-bottom: 100px;
+      align-items: baseline;
+    }
+    .section-num-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900;
+      color: var(--color-purple);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .section-num-title span.prefix {
+      font-size: 1.2rem;
+      vertical-align: top;
+      margin-right: 12px;
+      opacity: 0.8;
+    }
+
+    .about-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--color-black);
+    }
+    .about-lead p { margin-bottom: 24px; }
+    .about-lead a.text-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--color-purple);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .about-lead a.text-cta:hover { text-decoration: underline; }
+
+    /* Big Numbers Grid: f-afr-180 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 50px 30px;
+      border-top: 1px solid var(--color-gray-200);
+      padding-top: 60px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 9vw, 9.5rem);
+      font-weight: 900;
+      line-height: 0.85;
+      color: var(--color-black);
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+    .stat-label {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--color-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+    .stat-desc {
+      font-size: 0.92rem;
+      color: #4A4A5A;
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       SECTION 02: PRODUCTS (Wide range 500x500 cards)
+       ========================================================================== */
+    .section-products {
+      background: var(--color-dark);
+      color: #FFFFFF;
+      padding: 120px 5%;
+    }
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 70px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 30px;
+    }
+    .products-header .section-num-title {
+      color: var(--color-purple-light);
+    }
+    .products-header p.subtitle {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 500px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .product-card {
+      background: #13121F;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.35s var(--transition-smooth);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-purple-light);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(122, 0, 223, 0.2);
+    }
+
+    .product-image-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(122, 0, 223, 0.15) 0%, rgba(19, 18, 31, 0) 70%);
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .product-image-wrap img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+      transition: transform 0.4s var(--transition-smooth);
+    }
+    .product-card:hover .product-image-wrap img {
+      transform: scale(1.08) rotate(-1deg);
+    }
+
+    .product-category-tag {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--color-purple-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .product-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .product-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.55;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .product-attributes {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 50;
-      box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
     }
-    .logo {
+    .attr-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .attr-name {
+      font-size: 0.75rem;
+      color: var(--color-gray-500);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .attr-val {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .btn-view-product {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .product-card:hover .btn-view-product {
+      background: var(--color-purple);
+      border-color: var(--color-purple);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+
+    /* ==========================================================================
+       SECTION 03: SPOTLIGHT BANNERS (900x750 Aspect)
+       ========================================================================== */
+    .section-spotlight {
+      background: #090812;
+      padding: 100px 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .spotlight-banner {
+      background: #141324;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       text-decoration: none;
-      color: var(--dark);
+      color: #fff;
+      transition: all 0.35s;
     }
-    .logo-badge {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff; display: grid; place-items: center; font-size: 20px; font-weight: 800;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    .spotlight-banner:hover {
+      border-color: var(--color-purple-light);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
-    .logo-info b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-    .logo-info small { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
-    
-    .nav { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s; }
-    .nav a:hover { color: var(--primary); }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 12px 24px; border-radius: 999px;
-      font-size: 13.5px; font-weight: 700; text-decoration: none;
-      transition: all .25s ease;
+    .spotlight-banner-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-purple-light);
+      padding: 24px 28px 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
-    .btn-primary {
-      background: var(--primary); color: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    .spotlight-img-wrap {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
     }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .btn-outline {
-      background: transparent; color: var(--text); border: 1.5px solid var(--line);
+    .spotlight-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--transition-smooth);
     }
-    .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: #fff; }
-    .btn-block { width: 100%; }
-    .btn-sm {
-      background: var(--primary); color: #fff; font-size: 12px; font-weight: 700;
-      padding: 7px 16px; border-radius: 999px; text-decoration: none;
+    .spotlight-banner:hover .spotlight-img-wrap img {
+      transform: scale(1.05);
     }
-
-    /* Hero */
-    .hero {
-      padding: 64px 32px 72px;
-      max-width: 1240px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px;
+    .spotlight-footer {
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
+      background: rgba(0, 0, 0, 0.2);
     }
-    .rating-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #FFFFFF; border: 1px solid var(--line);
-      padding: 6px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700;
-      color: var(--dark); margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    }
-    .rating-pill span { color: #F59E0B; }
-    .hero h1 {
-      font-size: clamp(34px, 4.2vw, 52px);
-      font-weight: 800; letter-spacing: -0.03em; line-height: 1.14;
-      color: var(--dark);
-    }
-    .hero h1 em { font-style: normal; color: var(--primary); }
-    .hero p {
-      margin-top: 18px; font-size: 16.5px; color: var(--muted);
-      max-width: 540px; line-height: 1.65;
-    }
-    .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
-    .trust-row {
-      display: flex; gap: 20px; margin-top: 36px;
-      font-size: 12.5px; color: var(--muted); font-weight: 600; flex-wrap: wrap;
-    }
-    .trust-row span { display: flex; align-items: center; gap: 6px; color: var(--dark); }
-
-    /* Interactive Box */
-    .interactive-box {
-      background: var(--paper); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 32px;
-      box-shadow: var(--shadow);
-    }
-    .box-badge {
-      display: inline-block; font-size: 11px; font-weight: 800;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--primary); background: rgba(0,0,0,0.03);
-      padding: 4px 10px; border-radius: 6px; margin-bottom: 8px;
-    }
-    .box-head h3 { font-size: 20px; font-weight: 800; color: var(--dark); }
-    .box-head p { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
-    
-    /* Chips */
-    .date-chips { display: flex; gap: 10px; margin: 20px 0 16px; overflow-x: auto; padding-bottom: 6px; }
-    .chip {
-      background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
-      padding: 10px 16px; text-align: center; cursor: pointer; min-width: 80px;
-      transition: all .2s; font-family: inherit;
-    }
-    .chip.is-active, .chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-    .chip b { display: block; font-size: 13px; }
-    .chip span { font-size: 11px; opacity: .85; }
-    .time-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-    .time-tag {
-      background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
-      padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer;
-    }
-    .time-tag.is-active, .time-tag:hover { background: var(--dark); color: #fff; }
-    .box-action { margin-top: 16px; }
-
-    /* Form */
-    .quote-form { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .quote-form input, .quote-form select, .quote-form textarea {
-      width: 100%; padding: 12px 14px; border-radius: 8px;
-      border: 1px solid var(--line); background: var(--bg);
-      font-family: inherit; font-size: 13.5px; color: var(--text);
+    .spotlight-footer span {
+      font-weight: 700;
+      font-size: 1rem;
     }
 
-    /* Catalog Grid */
-    .catalog-grid { display: flex; flex-direction: column; gap: 12px; margin: 18px 0; }
-    .cat-item {
-      background: var(--bg); border: 1px solid var(--line);
-      border-radius: 10px; padding: 14px 16px;
+    /* Technical Datasheet Download & CTA Bar */
+    .cta-strip-section {
+      background: linear-gradient(135deg, var(--color-purple) 0%, #4D008C 100%);
+      padding: 80px 5%;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
     }
-    .cat-badge { font-size: 10.5px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
-    .cat-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-top: 2px; }
-    .cat-item p { font-size: 12px; color: var(--muted); }
-    .cat-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
-    .cat-foot b { font-size: 16px; color: var(--dark); font-weight: 800; }
-
-    /* Curriculum Cards */
-    .curriculum-list { display: flex; flex-direction: column; gap: 12px; margin: 18px 0; }
-    .curr-card { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
-    .curr-tag { font-size: 10.5px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
-    .curr-card h4 { font-size: 14.5px; font-weight: 700; color: var(--dark); }
-    .curr-card p { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .curr-card small { font-size: 11px; color: var(--primary); font-weight: 600; display: block; margin-top: 6px; }
-
-    /* Services Section */
-    .services-sec {
-      background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      padding: 72px 32px;
+    .cta-strip-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
     }
-    .sec-container { max-width: 1240px; margin: 0 auto; }
-    .sec-head { text-align: center; margin-bottom: 48px; }
-    .sec-head small {
-      display: inline-block; font-size: 11.5px; font-weight: 800;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--primary); margin-bottom: 6px;
+    .cta-strip-desc {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-top: 10px;
     }
-    .sec-head h2 { font-size: clamp(28px, 3.2vw, 38px); font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
-    .sec-head p { font-size: 15px; color: var(--muted); margin-top: 8px; max-width: 600px; margin-inline: auto; }
-
-    .services-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+    .cta-strip-buttons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .service-card {
-      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 28px 22px; display: flex; flex-direction: column;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+    .btn-whatsapp-large {
+      background: #25D366;
+      color: #000;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 16px 32px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s;
     }
-    .service-card:hover {
-      transform: translateY(-4px); box-shadow: var(--shadow);
-      border-color: var(--primary);
+    .btn-whatsapp-large:hover {
+      background: #1EBE5D;
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
     }
-    .srv-badge {
-      font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--primary); margin-bottom: 8px;
+    .btn-tds-modal {
+      background: transparent;
+      border: 2px solid #FFFFFF;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 15px 30px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.25s;
     }
-    .service-card h4 { font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.3; }
-    .service-card p { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; flex: 1; }
-    .srv-price { margin: 18px 0 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
-    .srv-price small { display: block; font-size: 11px; text-transform: uppercase; color: var(--muted); }
-    .srv-price b { font-size: 18px; font-weight: 800; color: var(--dark); }
-    .srv-link {
-      font-size: 12.5px; font-weight: 700; color: var(--primary); text-decoration: none;
-      display: inline-flex; align-items: center; gap: 4px;
+    .btn-tds-modal:hover {
+      background: #FFFFFF;
+      color: var(--color-black);
     }
-
-    /* Pillars */
-    .pillars-sec { padding: 72px 32px; max-width: 1240px; margin: 0 auto; }
-    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .pillar-card {
-      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 32px 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-    }
-    .pillar-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--bg); color: var(--primary); display: grid; place-items: center;
-      font-size: 22px; margin-bottom: 18px;
-    }
-    .pillar-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .pillar-card p { font-size: 14px; color: var(--muted); }
-
-    /* Testimonials */
-    .testi-sec { background: var(--paper); padding: 72px 32px; border-top: 1px solid var(--line); }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1240px; margin: 0 auto; }
-    .testi-card {
-      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 28px 24px;
-    }
-    .testi-stars { color: #F59E0B; margin-bottom: 12px; font-size: 14px; }
-    .testi-card p { font-size: 13.5px; color: var(--text); font-style: italic; line-height: 1.6; }
-    .testi-user { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
-    .user-avatar {
-      width: 38px; height: 38px; border-radius: 50%; background: var(--primary);
-      color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center;
-    }
-    .user-info b { display: block; font-size: 13.5px; font-weight: 700; color: var(--dark); }
-    .user-info small { font-size: 11.5px; color: var(--muted); }
-
-    /* FAQ */
-    .faq-sec { padding: 72px 32px; max-width: 860px; margin: 0 auto; }
-    .faq-item {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
-      margin-bottom: 12px; overflow: hidden;
-    }
-    .faq-item summary {
-      padding: 18px 22px; font-size: 15px; font-weight: 700; color: var(--dark);
-      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: "+"; font-size: 18px; color: var(--primary); font-weight: 800; }
-    .faq-item[open] summary::after { content: "−"; }
-    .faq-content { padding: 0 22px 20px; font-size: 14px; color: var(--muted); line-height: 1.6; }
 
     /* Footer */
-    .footer {
-      background: var(--dark); color: #94A3B8; padding: 60px 32px 32px; font-size: 13px;
+    footer {
+      background: #050508;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 80px 5% 40px;
+      color: var(--color-gray-500);
+      font-size: 0.9rem;
     }
-    .footer-inner {
-      max-width: 1240px; margin: 0 auto; display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
     }
-    .footer h5 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
-    .footer p { line-height: 1.6; max-width: 320px; }
+    .footer-brand p {
+      margin-top: 16px;
+      max-width: 320px;
+      line-height: 1.6;
+    }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col ul li a {
+      color: var(--color-gray-500);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--color-purple-light);
+    }
+
     .footer-bottom {
-      max-width: 1240px; margin: 24px auto 0; display: flex;
-      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
     }
-    .footer-bottom a { color: var(--accent); text-decoration: none; }
 
-    /* WhatsApp Float */
-    .wa-float {
-      position: fixed; right: 24px; bottom: 24px; z-index: 99;
-      width: 58px; height: 58px; border-radius: 50%;
-      background: #25D366; color: #fff; display: grid; place-items: center;
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
-      transition: transform .3s ease; text-decoration: none;
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-header { grid-template-columns: 1fr; gap: 30px; }
+      .spotlight-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .top-menu { display: none; }
     }
-    .wa-float:hover { transform: scale(1.1); }
-    .wa-float svg { width: 32px; height: 32px; fill: currentColor; }
-
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; padding: 40px 20px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .pillars-grid, .testi-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .nav { display: none; }
-    }
-    @media (max-width: 640px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
+    @media (max-width: 600px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+      .cta-strip-buttons { width: 100%; }
+      .btn-whatsapp-large, .btn-tds-modal { width: 100%; justify-content: center; }
     }
   </style>
 </head>
-<body>
-  <!-- Top Ribbon Nexo -->
-  <aside class="nexo-bar">
-    <span>✦ Modelo Demonstrativo Comercial · <b>Estética Automotiva</b></span>
-    <a href="../../../index.html">Criado por Nexo Studio — Solicite um site igual para sua empresa →</a>
-  </aside>
 
-  <!-- Top Info -->
-  <div class="top-info">
-    <span>Seg-Sáb: 08:00 - 19:00 &nbsp;•&nbsp; Campinas e Região Metropolitana - SP</span>
-    <span>Atendimento WhatsApp: <b>(19) 99633-1656</b></span>
+<body>
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="top-strip-left">
+      <span class="top-strip-tag">Oficial Brasil</span>
+      <span>Centro Técnico de Repintura Automotiva &amp; Distribuição Master</span>
+    </div>
+    <div class="top-strip-right">
+      <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20t%C3%A9cnicas%20sobre%20os%20produtos%20HB%20BODY" target="_blank" rel="noopener">
+        <span>Suporte Técnico WhatsApp: (19) 99633-1656</span>
+      </a>
+    </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="logo">
-      <div class="logo-badge">E</div>
-      <div class="logo-info">
-        <b>Veloce Detail Studio</b>
-        <small>Estética Automotiva</small>
+  <!-- Header Nav -->
+  <header>
+    <a href="#" class="brand-wrap" aria-label="HB BODY Brasil">
+      <div class="brand-logo">
+        <!-- Exact SVG Logo from hbbody.com -->
+        <svg viewBox="0 0 178 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.4628 2.96216C39.3948 1.61325 37.7442 0.890625 35.8509 0.890625H13.3254C9.68443 0.890625 6.04345 3.78114 5.26671 7.29792L0.897536 26.9052C0.509165 28.7359 0.84899 30.4702 1.91701 31.8191C2.98503 33.168 4.63561 33.8906 6.52891 33.8906H29.0544C32.6954 33.8906 36.3364 31.0001 37.1131 27.4833L41.4823 7.87603C41.9192 6.04537 41.5308 4.31106 40.4628 2.96216ZM39.055 7.29792L34.6858 26.9052C34.1518 29.314 31.5788 31.3855 29.0544 31.3855H6.48037C5.3638 31.3855 4.44142 31.0001 3.85886 30.2293C3.27631 29.5067 3.08212 28.495 3.32485 27.4352L7.69403 7.82785C8.22804 5.41909 10.801 3.34756 13.3254 3.34756H35.8509C36.9675 3.34756 37.8899 3.73296 38.4724 4.50376C39.1035 5.22639 39.2977 6.23807 39.055 7.29792Z" fill="white" />
+          <path d="M29.1507 10.0469H24.0048H21.0435L19.9269 15.2498H14.6839L15.8005 10.0469H11.3828L8.17871 24.6921H12.5964L13.8101 19.1038H19.0531L17.8394 24.6921H20.8008H27.0147C30.8499 24.6921 32.2092 22.2352 32.2092 20.3082C32.2092 19.0556 31.5781 17.8031 30.1217 17.4177C31.8693 17.2732 33.3743 15.5388 33.3743 13.66C33.3743 11.9257 32.1121 10.0469 29.1507 10.0469ZM26.6263 21.5126H22.5484L23.0824 18.8629H27.1603C27.84 18.8629 28.2284 19.3929 28.2284 20.0673C28.2284 20.8863 27.5973 21.5126 26.6263 21.5126ZM27.7429 15.6834H23.8106L24.2961 13.0819H28.0827C28.8109 13.0819 29.1022 13.6118 29.1022 14.1899C29.1022 14.8162 28.8109 15.6834 27.7429 15.6834Z" fill="white" />
+          <path d="M43.2295 28.7791L48.1812 6.57031H60.6091C65.1239 6.57031 67.0658 9.41265 67.0658 12.1105C67.0658 14.9528 64.687 17.5543 62.0169 17.7951C64.2015 18.3732 65.221 20.3484 65.221 22.1791C65.221 25.1178 63.182 28.8272 57.2594 28.8272H43.2295V28.7791ZM57.1138 20.3002H51.8707L51.1911 23.3353H56.4341C57.6963 23.3353 58.473 22.6126 58.473 21.6491C58.473 20.9265 57.9876 20.3002 57.1138 20.3002ZM58.5701 12.0141H53.7155L53.0844 14.8083H58.1332C59.4925 14.8083 59.8809 13.8929 59.8809 13.2185C59.8323 12.6404 59.4925 12.0141 58.5701 12.0141Z" fill="white" />
+          <path d="M80.6102 6.1875C87.2125 6.1875 92.2613 10.3306 92.2613 16.3043C92.2613 23.386 86.6299 29.1671 78.8139 29.1671C72.1631 29.1671 67.1143 25.024 67.1143 18.9539C67.1628 11.9203 72.7942 6.1875 80.6102 6.1875ZM80.1732 12.113C76.6293 12.113 74.1535 15.0999 74.1535 18.5203C74.1535 21.2663 76.1439 23.2415 79.2023 23.2415C82.7462 23.2415 85.2221 20.2547 85.2221 16.8342C85.2221 14.1364 83.2317 12.113 80.1732 12.113Z" fill="white" />
+          <path d="M106.291 6.57031C111.243 6.57031 116.437 10.2798 116.437 16.1572C116.437 21.7937 112.845 28.7791 101.485 28.7791H91.4844L96.4361 6.57031H106.291ZM102.699 22.9017C106.922 22.9017 109.398 20.0594 109.398 16.6389C109.398 14.2783 107.65 12.3995 105.029 12.3995H101.922L99.5916 22.9017H102.699Z" fill="white" />
+          <path d="M119.253 28.7791L121.195 19.963L115.807 6.57031H123.089L125.564 14.0856L131.341 6.57031H139.303L127.992 19.963L126.05 28.7791H119.253Z" fill="white" />
+        </svg>
       </div>
+      <span class="brand-badge">BRASIL</span>
     </a>
-    <ul class="nav">
-      <li><a href="#">Início</a></li>
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#diferenciais">Diferenciais</a></li>
-      <li><a href="#avaliacoes">Avaliações</a></li>
-      <li><a href="#duvidas">Dúvidas</a></li>
+
+    <!-- Menu Links with Submenu Badges -->
+    <ul class="top-menu">
+      <li><a href="#about">Empresa</a></li>
+      <li>
+        <span>Produtos ▾</span>
+        <ul class="submenu-dropdown">
+          <li><a href="#products">Clear Coats (Vernizes) <span class="category-count">16</span></a></li>
+          <li><a href="#products">Mix Systems (Sistemas Tintométricos) <span class="category-count">07</span></a></li>
+          <li><a href="#products">Primers &amp; Fundos <span class="category-count">31</span></a></li>
+          <li><a href="#products">955 Tough Liner <span class="category-count">05</span></a></li>
+          <li><a href="#products">Sprays Técnicos <span class="category-count">43</span></a></li>
+          <li><a href="#products">Polidores &amp; Compostos <span class="category-count">05</span></a></li>
+        </ul>
+      </li>
+      <li><a href="#spotlight">Color Mix Master</a></li>
+      <li><a href="#about">Pro Series</a></li>
+      <li><a href="#tds-section">Suporte TDS/MSDS</a></li>
+      <li><a href="#videos">Videohub</a></li>
     </ul>
-    <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+nos+servi%C3%A7os+da+Veloce+Detail+Studio." target="_blank" class="btn btn-primary">Fale Conosco</a>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <div class="lang-switcher">
+        <span class="active">PT</span>
+        <span>/</span>
+        <span>EN</span>
+        <span>/</span>
+        <span>ES</span>
+      </div>
+      <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20produtos%20HB%20BODY" target="_blank" class="btn-contact-header">
+        Falar com Consultor
+      </a>
+    </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="rating-pill">
-          <span>★★★★★</span> 4.9 no Google · +180 clientes satisfeitos
-        </div>
-        <h1>Excelência e cuidado para <em>estética automotiva</em> que você confia.</h1>
-        <p>Vitrificação de pintura, polimento técnico, higienização interna e proteção cerâmica de alto nível.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Gostaria+de+solicitar+um+atendimento+na+Veloce+Detail+Studio." target="_blank" class="btn btn-primary">Agendar pelo WhatsApp</a>
-          <a href="#servicos" class="btn btn-outline">Ver Especialidades</a>
-        </div>
-        <div class="trust-row">
-          <span>✓ Profissionais Certificados</span>
-          <span>✓ Atendimento Humanizado</span>
-          <span>✓ Orçamento Transparente</span>
+  <!-- Fullscreen Hero Slider (Identical to hbbody.com hero-swiper) -->
+  <section class="hero-slider-section">
+    <div class="slides-container">
+
+      <!-- Slide 1: Barolo Nero -->
+      <div class="hero-slide active" data-slide="0">
+        <div class="slide-bg" style="background-image: url('https://hbbody.com/wp-content/uploads/2026/09/Home-Header_1920x1080.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-subtitle">BAROLO NERO — EDIÇÃO EXCLUSIVA</span>
+          <h2 class="slide-title">Barolo Nero.<br>Black.<br><span class="accent">Re-Invented.</span></h2>
+          <p class="slide-description">Algumas cores você apenas enxerga. Outras você precisa vivenciar. A mais avançada tecnologia de pigmento ultra-profundo para repintura automotiva premium.</p>
+          <div class="cta-wrap">
+            <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20linha%20Barolo%20Nero" target="_blank" class="large-cta">
+              <span>Vivencie a Experiência</span>
+              <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+                <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#F5F5F5" stroke-width="1.5" />
+                <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#F5F5F5" stroke-width="1.5" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Interactive Module -->
-      
-        <div class="interactive-box">
-          <div class="box-head">
-            <span class="box-badge">Agendamento Online</span>
-            <h3>Escolha o melhor dia e horário para seu atendimento</h3>
-            <p>Selecione uma data para ser atendido sem filas e com horário reservado.</p>
-          </div>
-          <div class="date-chips">
-            <button class="chip is-active" type="button"><b>Hoje</b><span>28 Out</span></button>
-            <button class="chip" type="button"><b>Amanhã</b><span>29 Out</span></button>
-            <button class="chip" type="button"><b>Quinta</b><span>30 Out</span></button>
-            <button class="chip" type="button"><b>Sexta</b><span>31 Out</span></button>
-            <button class="chip" type="button"><b>Sábado</b><span>01 Nov</span></button>
-          </div>
-          <div class="time-chips">
-            <span class="time-tag is-active">08:30</span>
-            <span class="time-tag">10:00</span>
-            <span class="time-tag">11:30</span>
-            <span class="time-tag">14:00</span>
-            <span class="time-tag">15:30</span>
-            <span class="time-tag">17:00</span>
-            <span class="time-tag">18:30</span>
-          </div>
-          <div class="box-action">
-            <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Gostaria+de+agendar+um+hor%C3%A1rio+na+Veloce+Detail+Studio+para+Estética+Automotiva." target="_blank" class="btn btn-primary">Confirmar Agendamento no WhatsApp →</a>
+      <!-- Slide 2: Mix Master Software -->
+      <div class="hero-slide" data-slide="1">
+        <div class="slide-bg" style="background-image: url('https://hbbody.com/wp-content/uploads/2025/03/Slider_MixMaster_Launch.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-subtitle">COLOR SOLUTIONS MIX SYSTEMS</span>
+          <h2 class="slide-title">Descubra o<br><span class="accent">Mix Master!</span></h2>
+          <p class="slide-description">Software de alta precisão com espectrofotômetro integrado para acerto e mistura de cores. Mais de 120.000 formulações automotivas em segundos.</p>
+          <div class="cta-wrap">
+            <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20o%20software%20Mix%20Master" target="_blank" class="large-cta">
+              <span>Agendar Demonstração</span>
+              <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+                <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#F5F5F5" stroke-width="1.5" />
+                <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#F5F5F5" stroke-width="1.5" />
+              </svg>
+            </a>
           </div>
         </div>
-        
-    </section>
+      </div>
 
-    <!-- Services -->
-    <section class="services-sec" id="servicos">
-      <div class="sec-container">
-        <div class="sec-head">
-          <small>Nossas Soluções</small>
-          <h2>Especialidades &amp; Serviços</h2>
-          <p>Conheça os principais procedimentos e serviços desenvolvidos com padrão de excelência e tecnologia.</p>
-        </div>
-        <div class="services-grid">
-          
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Atendimento Padrão & Avaliação</h4>
-        <p>Diagnóstico inicial completo, planejamento detalhado e atendimento prioritário com nossa equipe.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>R$ 120,00</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Atendimento+Padrão+&+Avaliação+da+Veloce+Detail+Studio." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Procedimento Especializado</h4>
-        <p>Execução de serviços avançados com equipamentos de ponta, materiais certificados e garantia de satisfação.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>R$ 280,00</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Procedimento+Especializado+da+Veloce+Detail+Studio." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Pacote Completo / Manutenção</h4>
-        <p>Acompanhamento contínuo, revisões periódicas e condições facilitadas em planos mensais ou parcelados.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>R$ 490,00</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Pacote+Completo+/+Manutenção+da+Veloce+Detail+Studio." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-      <article class="service-card">
-        <div class="srv-badge">Especialidade</div>
-        <h4>Plano Personalizado / Premium</h4>
-        <p>Solução sob medida para clientes exigentes que buscam a máxima qualidade, exclusividade e suporte total.</p>
-        <div class="srv-price">
-          <small>Investimento</small>
-          <b>Sob Consulta</b>
-        </div>
-        <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Tenho+interesse+no+servi%C3%A7o+Plano+Personalizado+/+Premium+da+Veloce+Detail+Studio." target="_blank" class="srv-link">Solicitar este serviço <span>→</span></a>
-      </article>
-    
-        </div>
-      </div>
-    </section>
-
-    <!-- Pillars -->
-    <section class="pillars-sec" id="diferenciais">
-      <div class="sec-head">
-        <small>Por que nos escolher</small>
-        <h2>Diferenciais que Fazem a Diferença</h2>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-icon">★</div>
-          <h3>Experiência Comprovada</h3>
-          <p>Equipe qualificada com anos de atuação no mercado, constante atualização e compromisso com o resultado.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">⏱</div>
-          <h3>Pontualidade &amp; Agilidade</h3>
-          <p>Respeito rigoroso ao seu tempo, agendamento organizado e respostas imediatas pelo WhatsApp.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🛡</div>
-          <h3>Garantia &amp; Segurança</h3>
-          <p>Materiais de primeira linha, ambiente higienizado e total clareza em todas as etapas do serviço.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testi-sec" id="avaliacoes">
-      <div class="sec-head">
-        <small>Depoimentos</small>
-        <h2>O que Dizem Nossos Clientes</h2>
-      </div>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Atendimento impecável do início ao fim! Fui super bem atendida e o resultado superou minhas expectativas. Recomendo de olhos fechados!"</p>
-          <div class="testi-user">
-            <div class="user-avatar">MC</div>
-            <div class="user-info">
-              <b>Mariana Costa</b>
-              <small>Cliente Verificada • Google</small>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Profissionalismo raro de encontrar hoje em dia. Preço justo, pontualidade britânica e um cuidado que faz toda a diferença."</p>
-          <div class="testi-user">
-            <div class="user-avatar">RA</div>
-            <div class="user-info">
-              <b>Rodrigo Almeida</b>
-              <small>Cliente Verificado • Google</small>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Ambiente acolhedor, comunicação clara pelo WhatsApp e serviço nota dez. Já sou cliente fiel há mais de um ano!"</p>
-          <div class="testi-user">
-            <div class="user-avatar">CF</div>
-            <div class="user-info">
-              <b>Camila Ferreira</b>
-              <small>Cliente Verificada • Google</small>
-            </div>
+      <!-- Slide 3: #GivingLifeColour -->
+      <div class="hero-slide" data-slide="2">
+        <div class="slide-bg" style="background-image: url('https://hbbody.com/wp-content/uploads/2025/10/GLC_Website-banner.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-subtitle">#GIVINGLIFECOLOUR — BRASIL</span>
+          <h2 class="slide-title">Quando Carros<br><span class="accent">Criam Histórias</span></h2>
+          <p class="slide-description">A série que explora a força emocional da cor no universo automotivo. Onde carros se tornam telas de paixão, memória, restauração e identidade.</p>
+          <div class="cta-wrap">
+            <a href="#videos" class="large-cta">
+              <span>Assistir Agora</span>
+              <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+                <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#F5F5F5" stroke-width="1.5" />
+                <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#F5F5F5" stroke-width="1.5" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="faq-sec" id="duvidas">
-      <div class="sec-head">
-        <small>Tire suas dúvidas</small>
-        <h2>Perguntas Frequentes</h2>
+      <!-- Slide 4: Mix Systems -->
+      <div class="hero-slide" data-slide="3">
+        <div class="slide-bg" style="background-image: url('https://hbbody.com/wp-content/uploads/2023/06/header_Mix-Systems.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-subtitle">SISTEMAS TINTOMÉTRICOS COMPLETOS</span>
+          <h2 class="slide-title">Sua Aliada<br><span class="accent">Em Cada Cor!</span></h2>
+          <p class="slide-description">Soluções completas com pigmentos concentrados e bases PU/Poliéster para oficinas e lojas de tintas que exigem fidelidade cromática absoluta.</p>
+          <div class="cta-wrap">
+            <a href="#products" class="large-cta">
+              <span>Ver Produtos da Linha</span>
+              <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+                <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#F5F5F5" stroke-width="1.5" />
+                <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#F5F5F5" stroke-width="1.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-      <details class="faq-item" open>
-        <summary>Como funciona o agendamento de horários ou pedidos?</summary>
-        <div class="faq-content">
-          Você pode clicar em qualquer botão do site para falar diretamente com nossa equipe no WhatsApp. O atendimento é rápido e confirmamos sua solicitação na hora.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>Quais são as formas de pagamento aceitas?</summary>
-        <div class="faq-content">
-          Aceitamos Pix com desconto, cartões de crédito em até 12x, débito e transferência bancária com emissão de nota fiscal.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>Onde fica o local de atendimento?</summary>
-        <div class="faq-content">
-          Estamos localizados em região nobre com fácil acesso, estacionamento no local e infraestrutura completa para seu conforto.
-        </div>
-      </details>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <h5>Veloce Detail Studio</h5>
-        <p>Vitrificação de pintura, polimento técnico, higienização interna e proteção cerâmica de alto nível.</p>
-        <p style="margin-top: 12px; font-size: 12px; color: #64748B;">Atendimento em Campinas, SP e cidades vizinhas.</p>
+    </div>
+
+    <!-- Swiper Controls -->
+    <div class="swiper-controls">
+      <div class="swiper-fraction" id="slideFraction">01 / 04</div>
+      <div class="swiper-dots" id="slideDots">
+        <span class="swiper-dot active" onclick="goToSlide(0)"></span>
+        <span class="swiper-dot" onclick="goToSlide(1)"></span>
+        <span class="swiper-dot" onclick="goToSlide(2)"></span>
+        <span class="swiper-dot" onclick="goToSlide(3)"></span>
       </div>
-      <div>
-        <h5>Horários de Funcionamento</h5>
-        <p>Segunda a Sexta: 08:00 às 19:00<br />Sábados: 08:00 às 14:00<br />Domingos e Feriados: Fechado</p>
-      </div>
-      <div>
-        <h5>Contato &amp; WhatsApp</h5>
-        <p>WhatsApp: (19) 99633-1656<br />E-mail: contato@estetica-automotiva.com.br<br />Campinas - SP</p>
+      <div class="swiper-buttons">
+        <button class="swiper-btn" onclick="prevSlide()" aria-label="Slide Anterior">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 19L8 12L15 5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="swiper-btn" onclick="nextSlide()" aria-label="Próximo Slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 5L16 12L9 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
     </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 01: ABOUT US (Exact Layout with f-afr-180 Numbers)
+       ========================================================================== -->
+  <section class="section-about" id="about">
+    <div class="about-header">
+      <h2 class="section-num-title"><span class="prefix">01</span>QUEM SOMOS</h2>
+      <div class="about-lead">
+        <p>Somos a <strong>HB BODY Automotive Refinish</strong>, líder global e referência no setor de repintura e acabamento automotivo de elite. Desde 1982, projetamos e fabricamos uma linha completa de produtos com os mais rigorosos padrões da União Europeia, impulsionando oficinas de restauração e centros técnicos através de soluções avançadas e completas.</p>
+        <a href="https://wa.me/5519996331656?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20distribui%C3%A7%C3%A3o%20HB%20BODY" target="_blank" class="text-cta">
+          <span>Conhecer a infraestrutura e certificações globais →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Big Numbers Grid -->
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">75</span>
+        <span class="stat-label">Países de Exportação</span>
+        <p class="stat-desc">Nossa presença global abrange mais de 75 países nos cinco continentes, com suporte direto e homologação nas maiores montadoras do planeta.</p>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-number">40+</span>
+        <span class="stat-label">Anos de Estrada</span>
+        <p class="stat-desc">Após quatro décadas ininterruptas de liderança técnica no setor automotivo, dominamos a ciência dos polímeros e tintas como ninguém.</p>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-number">90%</span>
+        <span class="stat-label">Fabricação com Padrão Europeu</span>
+        <p class="stat-desc">Produzidos sob as normas ISO 9001 e ISO 14001, com matérias-primas de grau aeroespacial e testes químicos rigorosos de intemperismo.</p>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-number">270</span>
+        <span class="stat-label">Toneladas de Produção Diária</span>
+        <p class="stat-desc">Oferecemos uma das maiores capacidades industriais do mundo em vernizes, primers e complementos, garantindo estoque contínuo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 02: PRODUCTS (Exact Wide Range 500x500 Grid)
+       ========================================================================== -->
+  <section class="section-products" id="products">
+    <div class="products-header">
+      <div>
+        <h2 class="section-num-title"><span class="prefix">02</span>PRODUTOS</h2>
+        <p class="subtitle">Oferecemos uma <strong>linha completa e integrada</strong> para cada etapa do acabamento automotivo.</p>
+      </div>
+      <div>
+        <a href="https://wa.me/5519996331656?text=Gostaria%20de%20receber%20o%20cat%C3%A1logo%20completo%20de%20produtos%20HB%20BODY" target="_blank" class="large-cta">
+          <span>Catálogo em PDF</span>
+          <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+            <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#F5F5F5" stroke-width="1.5" />
+            <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#F5F5F5" stroke-width="1.5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+
+      <!-- Product 1: Clear Coats -->
+      <div class="product-card">
+        <div class="product-image-wrap">
+          <img src="https://hbbody.com/wp-content/uploads/2023/07/C898_1L_033_1200x1200-1-500x500.png" alt="Clear Coats C898 HB BODY" width="500" height="500" loading="lazy">
+        </div>
+        <span class="product-category-tag">Categoria</span>
+        <h3 class="product-title">Clear Coats (Vernizes)</h3>
+        <p class="product-desc">Série de vernizes poliuretano de altíssimo sólidos com brilho espelhado e excelente nivelamento. Resistência superior a intempéries e riscos mecânicos.</p>
+        <div class="product-attributes">
+          <div class="attr-group">
+            <span class="attr-name">PRO SERIES</span>
+            <span class="attr-val">8 Fórmulas</span>
+          </div>
+          <div class="attr-group">
+            <span class="attr-name">SERIES 6</span>
+            <span class="attr-val">5 Fórmulas</span>
+          </div>
+          <a href="https://wa.me/5519996331656?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20o%20Verniz%20C898" target="_blank" class="btn-view-product" aria-label="Ver Verniz">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 16L16 4M16 4H8M16 4V12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 2: Mix Systems -->
+      <div class="product-card">
+        <div class="product-image-wrap">
+          <img src="https://hbbody.com/wp-content/uploads/2025/07/BASECOAT_1L_045_1200x1200-500x500.png" alt="Basecoat Mix Systems HB BODY" width="500" height="500" loading="lazy">
+        </div>
+        <span class="product-category-tag">Categoria</span>
+        <h3 class="product-title">Color Solutions Mix Systems</h3>
+        <p class="product-desc">Sistemas tintométricos com milhares de tons e fórmulas matemáticas testadas para acerto de cor exato. A solução definitiva para oficinas exigentes.</p>
+        <div class="product-attributes">
+          <div class="attr-group">
+            <span class="attr-name">PIGMENTOS</span>
+            <span class="attr-val">Concentrados</span>
+          </div>
+          <div class="attr-group">
+            <span class="attr-name">BASES</span>
+            <span class="attr-val">PU / Poliéster</span>
+          </div>
+          <a href="https://wa.me/5519996331656?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20os%20Sistemas%20Mix%20Systems" target="_blank" class="btn-view-product" aria-label="Ver Mix Systems">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 16L16 4M16 4H8M16 4V12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 3: Primers -->
+      <div class="product-card">
+        <div class="product-image-wrap">
+          <img src="https://hbbody.com/wp-content/uploads/2023/07/C898_1L_033_1200x1200-1-500x500.png" style="filter: hue-rotate(180deg);" alt="Primers HB BODY" width="500" height="500" loading="lazy">
+        </div>
+        <span class="product-category-tag">Categoria</span>
+        <h3 class="product-title">Primers &amp; Fundos Técnicos</h3>
+        <p class="product-desc">Primers de alto enchimento 2K 4:1 e 5:1 com secagem ultrarrápida, excelente poder de lixamento a seco e ancoragem anticorrosiva em aços e plásticos.</p>
+        <div class="product-attributes">
+          <div class="attr-group">
+            <span class="attr-name">VERSÕES</span>
+            <span class="attr-val">Cinza / Preto / Branco</span>
+          </div>
+          <div class="attr-group">
+            <span class="attr-name">SECAGEM</span>
+            <span class="attr-val">20 min @ 60°C</span>
+          </div>
+          <a href="https://wa.me/5519996331656?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20a%20linha%20de%20Primers" target="_blank" class="btn-view-product" aria-label="Ver Primers">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 16L16 4M16 4H8M16 4V12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 4: 955 Tough Liner -->
+      <div class="product-card">
+        <div class="product-image-wrap">
+          <img src="https://hbbody.com/wp-content/uploads/2023/08/955_banner2.png" style="object-fit: contain; max-height: 80%;" alt="955 Tough Liner" width="500" height="500" loading="lazy">
+        </div>
+        <span class="product-category-tag">Categoria Especial</span>
+        <h3 class="product-title">955 Tough Liner 2K</h3>
+        <p class="product-desc">Revestimento protetor de poliuretano texturizado de extrema resistência a impactos, atrito, combustível, corrosão salina e raios UV para caçambas e 4x4.</p>
+        <div class="product-attributes">
+          <div class="attr-group">
+            <span class="attr-name">CORES</span>
+            <span class="attr-val">Preto ou Tingível</span>
+          </div>
+          <div class="attr-group">
+            <span class="attr-name">DUREZA</span>
+            <span class="attr-val">Grau Industrial</span>
+          </div>
+          <a href="https://wa.me/5519996331656?text=Quero%20saber%20mais%20sobre%20o%20955%20Tough%20Liner" target="_blank" class="btn-view-product" aria-label="Ver 955 Tough Liner">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 16L16 4M16 4H8M16 4V12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 03: SPOTLIGHT BANNERS (900x750 Aspect)
+       ========================================================================== -->
+  <section class="section-spotlight" id="spotlight">
+    <div class="spotlight-grid">
+
+      <!-- Banner 1: Smart Repair System -->
+      <a href="https://wa.me/5519996331656?text=Gostaria%20de%20conhecer%20o%20Smart%20Repair%20System" target="_blank" class="spotlight-banner">
+        <span class="spotlight-banner-title">HB BODY's Spotlight · Smart Repair</span>
+        <div class="spotlight-img-wrap">
+          <img src="https://hbbody.com/wp-content/uploads/2026/08/Smart-Repair_900x750.png" alt="Smart Repair System 900x750" width="900" height="750" loading="lazy">
+        </div>
+        <div class="spotlight-footer">
+          <span>Sistema de Reparos Rápidos Express</span>
+          <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+            <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#9B51E0" stroke-width="2" />
+            <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#9B51E0" stroke-width="2" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Banner 2: 955 Tough Liner -->
+      <a href="https://wa.me/5519996331656?text=Quero%20o%20cat%C3%A1logo%20do%20955%20Tough%20Liner" target="_blank" class="spotlight-banner">
+        <span class="spotlight-banner-title">955 Tough Liner · Protetor Extremo</span>
+        <div class="spotlight-img-wrap">
+          <img src="https://hbbody.com/wp-content/uploads/2023/08/955_banner2.png" alt="955 Tough Liner Banner 900x750" width="900" height="750" loading="lazy">
+        </div>
+        <div class="spotlight-footer">
+          <span>Revestimento Texturizado para Veículos Pesados &amp; Offroad</span>
+          <svg class="arrow" width="19" height="20" viewBox="0 0 19 20" fill="none">
+            <path d="M2.36621 1.26562H18.0019V16.9485" stroke="#9B51E0" stroke-width="2" />
+            <line y1="-0.5" x2="25.1802" y2="-0.5" transform="matrix(-0.69928 0.714847 -0.712736 -0.701432 17.6084 1)" stroke="#9B51E0" stroke-width="2" />
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Technical Datasheet & WhatsApp CTA -->
+  <section class="cta-strip-section" id="tds-section">
+    <div>
+      <h2 class="cta-strip-title">Fichas Técnicas &amp; Suporte em Tempo Real</h2>
+      <p class="cta-strip-desc">Consulte os boletins técnicos (TDS) e fichas de segurança (MSDS) para dosagem correta de catalisadores, tempos de cura e pressão de pistola.</p>
+    </div>
+    <div class="cta-strip-buttons">
+      <a href="https://wa.me/5519996331656?text=Preciso%20de%20suporte%20t%C3%A9cnico%20imediato%20HB%20BODY" target="_blank" class="btn-whatsapp-large">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.16C10.57 20.16 9.12 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.8 7.37 7.5 3.67 12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.05 20.16ZM16.57 14.46C16.32 14.33 15.1 13.73 14.87 13.65C14.64 13.57 14.48 13.52 14.31 13.77C14.15 14.02 13.68 14.58 13.54 14.74C13.4 14.9 13.26 14.92 13.01 14.8C12.76 14.67 11.96 14.41 11.01 13.57C10.27 12.91 9.77 12.1 9.63 11.85C9.49 11.6 9.61 11.47 9.74 11.34C9.85 11.23 9.99 11.05 10.12 10.91C10.25 10.77 10.29 10.66 10.37 10.5C10.45 10.34 10.41 10.2 10.35 10.08C10.29 9.96 9.8 8.75 9.59 8.26C9.39 7.78 9.19 7.84 9.03 7.84H8.55C8.38 7.84 8.12 7.9 7.9 8.14C7.68 8.38 7.07 8.95 7.07 10.11C7.07 11.27 7.91 12.39 8.03 12.55C8.15 12.71 9.7 15.08 12.07 16.1C12.63 16.34 13.07 16.49 13.41 16.6C13.97 16.78 14.48 16.75 14.88 16.69C15.33 16.62 16.26 16.13 16.45 15.59C16.65 15.05 16.65 14.59 16.59 14.49C16.53 14.4 16.4 14.35 16.57 14.46Z"/>
+        </svg>
+        <span>(19) 99633-1656</span>
+      </a>
+      <button class="btn-tds-modal" onclick="alert('Todas as fichas técnicas TDS/MSDS estão disponíveis para envio imediato via WhatsApp de suporte técnico!')">
+        Baixar Fichas TDS / MSDS
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 178 34" fill="none" width="160" height="30" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.4628 2.96216C39.3948 1.61325 37.7442 0.890625 35.8509 0.890625H13.3254C9.68443 0.890625 6.04345 3.78114 5.26671 7.29792L0.897536 26.9052C0.509165 28.7359 0.84899 30.4702 1.91701 31.8191C2.98503 33.168 4.63561 33.8906 6.52891 33.8906H29.0544C32.6954 33.8906 36.3364 31.0001 37.1131 27.4833L41.4823 7.87603C41.9192 6.04537 41.5308 4.31106 40.4628 2.96216ZM39.055 7.29792L34.6858 26.9052C34.1518 29.314 31.5788 31.3855 29.0544 31.3855H6.48037C5.3638 31.3855 4.44142 31.0001 3.85886 30.2293C3.27631 29.5067 3.08212 28.495 3.32485 27.4352L7.69403 7.82785C8.22804 5.41909 10.801 3.34756 13.3254 3.34756H35.8509C36.9675 3.34756 37.8899 3.73296 38.4724 4.50376C39.1035 5.22639 39.2977 6.23807 39.055 7.29792Z" fill="white" />
+        </svg>
+        <p>HB BODY Automotive Refinish Brasil. Líder no desenvolvimento e fabricação de soluções de repintura automotiva com certificação de excelência internacional.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Linhas</h4>
+        <ul>
+          <li><a href="#products">Clear Coats PU</a></li>
+          <li><a href="#products">Mix Systems</a></li>
+          <li><a href="#products">Primers &amp; Fundos</a></li>
+          <li><a href="#products">955 Tough Liner</a></li>
+          <li><a href="#products">Pro Series</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Suporte Técnico</h4>
+        <ul>
+          <li><a href="#tds-section">Boletins TDS</a></li>
+          <li><a href="#tds-section">Fichas de Segurança MSDS</a></li>
+          <li><a href="#spotlight">Color Mix Master</a></li>
+          <li><a href="https://wa.me/5519996331656" target="_blank">Treinamento Presencial</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato Brasil</h4>
+        <ul>
+          <li>WhatsApp: (19) 99633-1656</li>
+          <li>Campinas / Paulínia / SP</li>
+          <li>Atendimento Nacional</li>
+          <li>Seg a Sex: 08:00 às 18:00</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="footer-bottom">
-      <span>&copy; 2026 Veloce Detail Studio. Todos os direitos reservados.</span>
-      <span>Site demonstrativo desenvolvido por <a href="../../../index.html">Nexo Studio</a></span>
+      <span>&copy; 2026 HB BODY Automotive Refinish. Todos os direitos reservados.</span>
+      <span>Desenvolvido com excelência por Nexo Studio</span>
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/5519996331656?text=Ol%C3%A1!+Vi+o+site+da+Veloce+Detail+Studio+e+gostaria+de+um+atendimento." target="_blank" class="wa-float" aria-label="Fale conosco pelo WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
-  </a>
+  <!-- Script Hero Swiper Logic -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.swiper-dot');
+    const fraction = document.getElementById('slideFraction');
+    const totalSlides = slides.length;
+    let autoSlideTimer;
+
+    function updateSlider(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === currentSlide);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+      });
+      if (fraction) {
+        fraction.textContent = `0${currentSlide + 1} / 0${totalSlides}`;
+      }
+    }
+
+    function nextSlide() {
+      updateSlider(currentSlide + 1);
+      resetTimer();
+    }
+
+    function prevSlide() {
+      updateSlider(currentSlide - 1);
+      resetTimer();
+    }
+
+    function goToSlide(index) {
+      updateSlider(index);
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = setInterval(nextSlide, 6500);
+    }
+
+    autoSlideTimer = setInterval(nextSlide, 6500);
+  </script>
+
 </body>
 </html>
